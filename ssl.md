@@ -34,4 +34,14 @@ Print the certificate in text form and don't print certificate output.
     
     openssl x509 -in <certificate path> -text -noout
 
+**Verify Whether a Certificate and Private Key Match**
+
+Verify Whether a Certificate and Private Key Match.
+To verify, you need to print out md5 checksums and compare them.
+    
+    openssl x509 -noout -modulus -in server.crt| openssl md5
+    openssl rsa -noout -modulus -in server.key| openssl md5
+
+
+
 
