@@ -32,7 +32,7 @@
 
 Print the certificate in text form and don't print certificate output.
     
-    openssl x509 -in <certificate path> -text -noout
+    openssl x509 -in server.crt -text -noout
 
 **Verify Whether a Certificate and Private Key Match**
 
@@ -42,6 +42,20 @@ To verify, you need to print out md5 checksums and compare them.
     openssl x509 -noout -modulus -in server.crt| openssl md5
     openssl rsa -noout -modulus -in server.key| openssl md5
 
+**Verify key and it's validity**
 
+    sudo openssl rsa -in server.key -noout -check
+    RSA key ok
 
+**Verify a Certificate was Signed by a CA**
+    
+    openssl verify -verbose -CAFile ca.crt server.crt
 
+**Convert PEM to DER**
+    
+    openssl x509 -in server.crt -outform der -out server.der
+
+**Convert DER to PEM**
+    
+    openssl x509 -inform der -in server.der -out server.crt
+    
