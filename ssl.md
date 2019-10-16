@@ -3,7 +3,7 @@
     An SSL Certificate is essentially an X.509 certificate, it defines the structure of the certificate.
     These certificate files will have different extensions based on the format and encoding they use.
 
-**Two types of encoding**
+**Types of encoding**
     
     Binary
     Base64 ASCII
