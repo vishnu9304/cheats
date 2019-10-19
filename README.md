@@ -1,68 +1,81 @@
-## The "What ?" and the "Why ?"
+[![Travis][travis-image]][travis-link]
+[![Downloads][downloads-image]][downloads-link]
+[![Gitter][gitter-image]][gitter-link]
+[![PyPI][pypi-image]][pypi-link]
+[![dependabot][dependabot-image]][dependabot-link]
 
-**Carte** is a simple Jekyll based documentation website for APIs. It is designed as a boilerplate to build your own documentation and is heavily inspired from [Swagger](http://swagger.wordnik.com/) and [I/O docs](http://www.mashery.com/product/io-docs). Fork it, add specifications for your APIs calls and customize the theme. <small>Go ahead, see if we care.</small>
+  [travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg?branch=master
+  [travis-link]: https://travis-ci.org/squidfunk/mkdocs-material
+  [downloads-image]: https://img.shields.io/pypi/dm/mkdocs-material.svg
+  [downloads-link]: https://pypistats.org/packages/mkdocs-material
+  [gitter-image]: https://badges.gitter.im/squidfunk/mkdocs-material.svg
+  [gitter-link]: https://gitter.im/squidfunk/mkdocs-material
+  [pypi-image]: https://img.shields.io/pypi/v/mkdocs-material.svg
+  [pypi-link]: https://pypi.python.org/pypi/mkdocs-material
+  [dependabot-image]: https://img.shields.io/badge/dependabot-enabled-06f.svg
+  [dependabot-link]: https://dependabot.com
 
-We built **Carte** because the existing options (Swagger and the likes) were trying to do too much and did not match our needs:
+# Material for MkDocs
 
-1. Most of our API calls are sending JSON objects, as opposed to a series of parameters,
-1. Being able to query the real API is nice, but running anything but `GET` calls can get tricky ("What do you mean I deleted my stuff? I was just trying out the API calls!"),
-1. Overall, setting up a separate server for what really requires a good static documentation seemed overkill.
+A Material Design theme for [MkDocs][1].
 
-The real value of **Carte** is its structure for describing APIs, not its underlying technical stack (or lack-thereof). In a nutshell; **we built a static template for your API documentation, feel free to re-use it**.
+[![Material for MkDocs](https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/docs/assets/images/material.png)][2]
 
-## Install
+  [1]: https://www.mkdocs.org
+  [2]: https://squidfunk.github.io/mkdocs-material/
 
-It' Jekyll god dammit:
+## Quick start
 
-1. Clone this repository on your local,
-1. [Install Jekyll](https://github.com/mojombo/jekyll/wiki/install),
-1. Go at the root of the repository and run ```jekyll serve --watch```,
-1. Go to http://localhost:4000,
-1. [Great success! High five!](http://www.youtube.com/watch?v=wWWyJwHQ-4E)
+Install the latest version of Material with `pip`:
 
-## How to...
-
-### Adding a new API call
-
-You can add a new API call by simply adding a new post in the `_posts` folder. Jekyll by default forces you to specify a date in the file path: it makes us sad pandas too, but you'll have to stick to this format. You can use dates to control the order in which API calls are displayed in the interface.
-
-Each API call can define a few values in its YAML header:
-
-Variable | Mandatory | Default | Description
---- | --- | --- | ---
-``title`` | Y | - | A short description of what that calls does.
-``path`` | N | - | The URL for the API call, including potential parameters.
-``type`` | N | - | Set it to `PUT`, `GET`, `POST`, `DELETE` or nothing (for parts of your documentation that do not relate to an actual API call).
-
-A typical header:
-
-```
----
-path: '/stuff/:id'
-title: 'Delete a thing'
-type: 'DELETE'
-
-layout: nil
----
+``` sh
+pip install mkdocs-material
 ```
 
-We then describe the request and response (or whatever else you wish to talk about) in the body of our post. Check the placeholders present in the `_posts` folder to get an idea of what it can look like.
+Append the following line to your project's `mkdocs.yml`:
 
-### Grouping calls
-
-Adding a category to your YAML header will allows you to group methods in the navigation. It is particularly helpful as you start having a lot of methods and need to organize them. For example:
-
-```
----
-category: Stuff
-path: '/stuff/:id'
-title: 'Delete a thing'
-type: 'DELETE'
-
-layout: nil
----
+``` yaml
+theme:
+  name: 'material'
 ```
 
-### Edit the design
+## What to expect
 
-The default UI is mostly described through the `css/style.css` file and a couple short jQuery scripts in the `/_layouts/default.html` layout. Hack it to oblivion.
+* Responsive design and fluid layout for all kinds of screens and devices,
+  designed to serve your project documentation in a user-friendly way in 39
+  languages with optimal readability.
+
+* Easily customizable primary and accent color, fonts, favicon and logo;
+  straight forward localization through theme extension; integrated with Google
+  Analytics, Disqus and GitHub.
+
+* Well-designed search interface accessible through hotkeys (<kbd>F</kbd> or
+  <kbd>S</kbd>), intelligent grouping of search results, search term
+  highlighting and lazy loading.
+
+For detailed installation instructions and a demo, visit
+https://squidfunk.github.io/mkdocs-material/
+
+## License
+
+**MIT License**
+
+Copyright (c) 2016-2019 Martin Donath
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to
+deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+sell copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
