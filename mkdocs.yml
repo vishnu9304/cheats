@@ -112,9 +112,4 @@ markdown_extensions:
 nav:
   - Welcome: index.md
   - Network Security: crypto/network_security.md
-  - License: license.md
-
-# Google Analytics
-google_analytics:
-  - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
-  - auto
+  - SSL: crypto/ssl.md
