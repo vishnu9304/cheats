@@ -1,4 +1,4 @@
-OSI Model - Open Systems Interconnect
+### OSI Model - Open Systems Interconnect
 
     Physical Layer - Twisted, Co-axial, Wireless, Copper cables etc.    
 
@@ -10,7 +10,7 @@ OSI Model - Open Systems Interconnect
 
     Application Layer - http, https, ssh etc.
 
-Application Layer Protocols:
+### Application Layer Protocols
 
     Data Transfer Protocols     - HTTP/HTTPS, protocol used to transfer hypertext documents.
                                 - FTP (20 Auth, 21 Data Transfer), SFTP (22), TFTP (69) tranferring files. TFTP for sending small files   without authentication.
@@ -20,11 +20,11 @@ Application Layer Protocols:
     Network Management Protocols- TELNET 23, SSH 22, SNMP
     Audio Visual Protocols      - H.323 1720/1721 (Audio/Video comms), SIP 5060/5061 (Session Initiation Protocol)
 
-Layer 4 & Layer 7:
+### Layer 4 & Layer 7
 
     Layer 4 - Transport Layer Protocols and Uinversal Datagram Protocols.
     
-    3-way Handshake.
+#### 3-way Handshake
 
     Step 1: SYN from client to server
     Step 2: ACK + SYN from server
@@ -32,7 +32,7 @@ Layer 4 & Layer 7:
 
     We user layer4 to establish the session and layer7 for actual data transfer.
 
-    4-way Disconnect.
+#### 4-way Disconnect
 
     Step 1: FIN from server
     Step 2: FIN + ACK from client

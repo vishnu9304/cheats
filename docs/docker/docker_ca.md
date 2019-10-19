@@ -1,8 +1,10 @@
-Docker Edition:
+#### Docker Edition
+
     Community Edition   - Free & Opensource
     Enterprise Edition  - Paid version
 
-Installing Docker CE
+#### Installing Docker CE
+
     1 - sudo yum install -y device-mapper-persistent-data lvm2
     2 - sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
     3 - sudo yum install -y docker-ce-18.09.5 docker-ce-cli-18.09.5 containerd.io
@@ -10,8 +12,10 @@ Installing Docker CE
     5 - sudo systemctl enable docker 
     6 - sudo useradd -a -G docker <username> // For allowing normal users to execute docker commands, add them under docker group.
 
-Selcting Storage Driver:
+#### Selcting Storage Driver
+
     Command to find the storage driver: docker info
+
     Changing the default storage driver:
 
         1 - Change it under "/usr/lib/systemd/system/docker.service" and add this flag:  --storage-driver devicemapper
@@ -27,15 +31,17 @@ Selcting Storage Driver:
             "storage-driver": "devicemapper"
         }
 
-    When you start a container, a thin writable container layer is added on top of the other layers. Any changes the container makes to the filesystem are stored here.
-    The major difference between a container and an image is the top writable layer. 
-    When the container is deleted, the writable layer is also deleted. The underlying image remains unchanged.
+    When you start a container, a thin writable container layer is added on top of the other layers.
+    Any changes the container makes to the filesystem are stored here.
+    The major difference between a container and an image is the top writable layer.
+    When the container is deleted, the writable layer is also deleted. 
+    The underlying image remains unchanged.
     
     Container Size On Disk: docker ps -s    // https://docs.docker.com/storage/storagedriver/
 
     Copy On Write: Copy the files to the writable layer only if the files are modifed.
 
-Running the docker Container: (docker run command)
+#### Running the docker Container: (docker run command)
 
     Some of the common falgs used with "docker run" command.
     Syntax: docker run [options] image[:tag] [command] [args]
@@ -53,7 +59,7 @@ Running the docker Container: (docker run command)
     --memory                            Memory Hard Limit.
     --memory-reservation                A soft limit on memory usage. Container will be restricted within this memory if docker detects memory contention on the host.
 
-Logging Drivers:
+#### Logging Drivers
 
     https://docs.docker.com/config/containers/logging/configure/
 
@@ -72,21 +78,24 @@ Logging Drivers:
 
     docker run --log-driver json-file --log-opt max-size=50m nginx
 
-
-Image Creation, Management, and Registry:
+#### Image Creation, Management, and Registry
 
     Docker Images:
+
         The image consists of one or more read-only layers, while the container adds one additional layer.
 
-    The layered filesystem allows multiple images and containers to share the same layers. This results in 
-    1 - Small overall footprint
-    2 - Faster image transfer
-    3 - Faster image build
+    The layered filesystem allows multiple images and containers to share the same layers. 
+    
+    This results in
+    
+        1 - Small overall footprint
+        2 - Faster image transfer
+        3 - Faster image build
 
         docker image pull IMAGE[:TAG]   To pull the docker image.
         docker image history IMAGE      To list the layers used by the image.
     
-    Components Of Dockerfile:     
+#### Components Of Dockerfile
     
         https://docs.docker.com/engine/reference/builder/
 
@@ -132,44 +141,51 @@ Image Creation, Management, and Registry:
 
         CMD ["nginx", "-g", "daemon off;"]
 
-
-Building Efficient Images:
+#### Building Efficient Images
 
     General tips:
+
     - Put things that are less likely to change on lower level layers.
     - Don't create unnecessary layers.
     - Avoid including any unnecessary files, packages, etc..
 
     Docker Multistage builds:
-    Docker supports ablity to perform multistage builds. It will have more than one FROM directive in the docker file with each FROM directive starting a new stage.
 
-    Each stage begins with a completely new set of layers, allowing you to selectively copy only the files needed from previous layer.
+        Docker supports ablity to perform multistage builds.It will have more than one FROM directive in the docker file with each FROM directive starting a new stage.
 
-    Example: Below steps will create an image size of 774MB
+        Each stage begins with a completely new set of layers, allowing you to selectively copy only the files needed from previous layer.
 
-    FROM golang:1.12.4
-    WORKDIR /helloworld
-    COPY helloworld.go .
-    RUN GOOS=linux go build -a -installsuffix cgo -o helloworld .
-    CMD ["./helloworld"]
+    Example:
+    
+        Below steps will create an image size of 774MB
 
-    Example: Multistate build. This will produce only image size of 7MB. Idea is to keep only the required files not all, in our case we don't need the entire to go image to run our program. All we need is a binary. Create the binay in STAGE1 and move it to STAGE2 image with smaller size.
+        FROM golang:1.12.4
+        WORKDIR /helloworld
+        COPY helloworld.go .
+        RUN GOOS=linux go build -a -installsuffix cgo -o helloworld .
+        CMD ["./helloworld"]
 
-    FROM golang:1.12.4 AS compiler                                  //STAGE1
-    WORKDIR /helloworld
-    COPY helloworld.go .
-    RUN GOOS=linux go build -a -installsuffix cgo -o helloworld .
+    Example:
 
-    FROM alpine:3.9.3                                               //STAGE2
-    WORKDIR /root
-    COPY --from=compiler /helloworld/helloworld .
-    CMD ["./helloworld"]
+        Multistate build.This will produce only image size of 7MB.
+        Idea is to keep only the required files not all, in our case we don't need the entire to go image to run our program. 
+        All we need is a binary. Create the binay in STAGE1 and move it to STAGE2 image with smaller size.
 
-    REPOSITORY                                                     TAG                 IMAGE ID            CREATED             SIZE
-    gostage                                                        latest              3b3816104992        7 seconds ago       7.53MB
-    go-custom                                                      latest              9802cc0d3ab8        10 minutes ago      776MB
+        FROM golang:1.12.4 AS compiler                                  //STAGE1
+        WORKDIR /helloworld
+        COPY helloworld.go .
+        RUN GOOS=linux go build -a -installsuffix cgo -o helloworld .
 
-Managing Images:
+        FROM alpine:3.9.3                                               //STAGE2
+        WORKDIR /root
+        COPY --from=compiler /helloworld/helloworld .
+        CMD ["./helloworld"]
+
+        REPOSITORY                                                     TAG                 IMAGE ID            CREATED             SIZE
+        gostage                                                        latest              3b3816104992        7 seconds ago       7.53MB
+        go-custom                                                      latest              9802cc0d3ab8        10 minutes ago      776MB
+
+#### Managing Images
 
     docker pull                                                         To pull the images from registry, if not found locally.
     docker image ls                                                     To list images.
@@ -179,45 +195,54 @@ Managing Images:
     docker image rm <image name>    / docker rmi <image name>           To remove the image.
     docker container ls -a / docker ps -a                               To list the containers.
 
-    Dangling Images:
+#### Dangling Images:
+
     Dangling Images are something which doesn't have tags and no containers referencing them.
-    When we delete a container, it doesn't necessarily delete the uderlying image. It will delete only the tags not the image. So that image is called danglig image.
 
-    Cleaning up the Dangling Images:
-    docker image prune          If you have any image which is not referenced by anything or any containers. This command will do a clean up.
+    When we delete a container, it doesn't necessarily delete the uderlying image. 
+    
+    It will delete only the tags not the image. So that image is called danglig image.
 
-    Flattening an Image: Docker doesn't provide an official way to do this.
+#### Cleaning up the Dangling Images:
+
+    docker image prune
+
+    If you have any image which is not referenced by anything or any containers.
+    This command will do a clean up.
+
+#### Flattening an Image: Docker doesn't provide an official way to do this.
 
     Run a container -> docker export (export the container to an archive) -> docker import (Import the archive as new image)
         docker export <container> > flat.tar
         cat flat.tar | docker import - flat:latest
 
 
-Docker Storage: https://docs.docker.com/storage/
+#### Docker Storage: https://docs.docker.com/storage/
 
-    Storage drivers are also known as Graph Drivers. The proper storage driver to use often depends on your operating system.
+    Storage drivers are also known as Graph Drivers. 
+    The proper storage driver to use often depends on your operating system.
 
     overlay2        Centos8 and RHEL versions   
     aufs            Ubuntu 
     device mapper   Centos7 and earlier
-
+    
     Storage Models: Persistent data can be managed using several storage models.
 
-    Filesystem storage:
+#### Filesystem storage:
 
-        Data stored in the form of a file system.
-        Used by overlay and aufs.
-        Efficient use of memory.
-        Inefficient with write-heavy workloads.
+    Data stored in the form of a file system.
+    Used by overlay and aufs.
+    Efficient use of memory.
+    Inefficient with write-heavy workloads.
 
-    Block storage:
+#### Block storage:
 
-        Stores data in block.
-        Used by device mapper.
-        Efficient with write-heavy workloads.
+    Stores data in block.
+    Used by device mapper.
+    Efficient with write-heavy workloads.
 
-    Object storage:
+#### Object storage:
 
-        Stores data in an external object based store.
-        Application must be designed to use object based storage.
-        Flexible and scalable.
+    Stores data in an external object based store.
+    Application must be designed to use object based storage.
+    Flexible and scalable.

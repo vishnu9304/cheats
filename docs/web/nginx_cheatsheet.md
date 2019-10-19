@@ -1,21 +1,21 @@
-
-Notes:
-
+#### Notes:
+    
     The basic nginx architecture consists of a master process and its workers.
     Developed to solve c10k problems. Which means handling 10,000 concurrent connections.
 
-    Applications:
-        High Performance Web Server
-        Reverse Proxy (SSL Termination and Contnet Caching and Termination)
-        Load Balancer
+#### Applications:
+        
+    High Performance Web Server
+    Reverse Proxy (SSL Termination and Contnet Caching and Termination)
+    Load Balancer
 
-    The master is supposed to read the configuration file and maintain worker processes, while workers do the actual processing of requests.
+The master is supposed to read the configuration file and maintain worker processes, while workers do the actual processing of requests.
 
-References:
-    
+#### References:
+        
     To get info about core context and directive blocks, go to http://nginx.org/en/docs/ngx_core_module.html
 
-Commands:
+#### Commands:
 
     While your nginx instance is running, you can manage it by sending signals:
 
@@ -27,18 +27,22 @@ Commands:
     reopen: reopen the log files
 
     To verify configuration: nginx -t
+
     To view selinux context: semanage fcontext -l | grep -i /usr/share/nginx/html
+
     To add selinux context: semanage fcontext -a -t httpd_sys_content_t '/var/www'
+
     To restore context back to default: restorecon -R -v '/var/www'
+
     Curl with host header: curl --header "Host: www.example.com" localhost
 
-Configuration files location:
+#### Configuration files location:
 
     /etc/nginx/nginx.conf
     /usr/local/etc/nginx/nginx.conf
     /usr/local/nginx/conf/nginx.conf
 
-Directive and Context:
+#### Directive and Context:
 
     Directive: The option that consists of name and parameters; it should end with a semicolon
 
@@ -52,13 +56,13 @@ Directive and Context:
         gzip on;        # directive in http context
     }
 
-Directive types:
+#### Directive types:
 
     You have to pay attention when using the same directive in multiple contexts, as the inheritance model differs for different directives. 
 
     There are 3 types of directives, each with its own inheritance model.
 
-Normal:
+#### Normal:
 
     Has one value per context.
     Also, it can be defined only once in the context.
@@ -76,7 +80,7 @@ Normal:
             }
         }
 
-Array:
+#### Array:
 
     Adding multiple directives in the same context will add to the values instead of overwriting them altogether.
     Defining a directive in a subcontext will override ALL parent values in the given subcontext.
@@ -92,7 +96,7 @@ Array:
         }
     }
 
-Action:
+#### Action:
 
     Actions are directives that change things. Their inheritance behaviour will depend on the module.
     For example, in the case of the rewrite directive, every matching directive will be executed:
@@ -106,12 +110,12 @@ Action:
         }
     }
 
-Custom Error Pages:
+#### Custom Error Pages:
 
     Syntax: error_page <list of error codes> <error page>
     Example: error_page 404 /404.html
 
-Basic Auth:
+#### Basic Auth:
 
     https://nginx.org/en/docs/http/ngx_http_auth_basic_module.html
     location /admin.html {
@@ -121,7 +125,7 @@ Basic Auth:
 
 nginx SSL: https://nginx.org/en/docs/http/ngx_http_ssl_module.html
 
-Self Singed Certs:
+#### Self Singed Certs:
 
     mkdir /etc/nginx/ssl
     openssl -req x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/keys/private.key -out /etc/nginx/ssl/public.pem
