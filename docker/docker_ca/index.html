@@ -662,10 +662,15 @@ Enterprise Edition  - Paid version
 </code></pre>
 <h4 id="installing-docker-ce">Installing Docker CE</h4>
 <pre><code>1 - sudo yum install -y device-mapper-persistent-data lvm2
+
 2 - sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
 3 - sudo yum install -y docker-ce-18.09.5 docker-ce-cli-18.09.5 containerd.io
+
 4 - sudo systemctl start docker
-5 - sudo systemctl enable docker 
+
+5 - sudo systemctl enable docker
+
 6 - sudo useradd -a -G docker &lt;username&gt; // For allowing normal users to execute docker commands, add them under docker group.
 </code></pre>
 <h4 id="selcting-storage-driver">Selcting Storage Driver</h4>
@@ -687,9 +692,13 @@ Changing the default storage driver:
     }
 
 When you start a container, a thin writable container layer is added on top of the other layers.
+
 Any changes the container makes to the filesystem are stored here.
+
 The major difference between a container and an image is the top writable layer.
-When the container is deleted, the writable layer is also deleted. 
+
+When the container is deleted, the writable layer is also deleted.
+
 The underlying image remains unchanged.
 
 Container Size On Disk: docker ps -s    // https://docs.docker.com/storage/storagedriver/
@@ -698,6 +707,7 @@ Copy On Write: Copy the files to the writable layer only if the files are modife
 </code></pre>
 <h4 id="running-the-docker-container-docker-run-command">Running the docker Container: (docker run command)</h4>
 <pre><code>Some of the common falgs used with "docker run" command.
+
 Syntax: docker run [options] image[:tag] [command] [args]
 -d      Run container in detached mode.
 --name  For providing a descriptive name to the container.
@@ -745,6 +755,7 @@ This results in
     3 - Faster image build
 
     docker image pull IMAGE[:TAG]   To pull the docker image.
+
     docker image history IMAGE      To list the layers used by the image.
 </code></pre>
 <h4 id="components-of-dockerfile">Components Of Dockerfile</h4>
@@ -754,19 +765,28 @@ This results in
     These instructions are called directives.
 
     FROM            Starts with a new build stage and sets the base image.
+
     ENV             To set environment variables.
+
     RUN             Create new filesystem layer by running a command.
+
     CMD             Default command to run when the container is executed.
+
     EXPOSE          Technically it will not expose any ports. Documents which ports are intended to be published when running a container.
+
     WORKDIR         Sets the current working directory for subsequent directives such as ADD,COPY,CMD,ENTRYPOINT
                     We can have multiple WORKDIR directives inside the docker file.
                     WORKDIR /var
                     WORKDIR www         //Relative path
                     WORKDIR html
                     The above three WORKDIR directives are equivalent to /var/www/html      //Absolute path
+
     COPY            Copy files from local machine to the image
+
     ADD             Similar to copy, but little advanced than COPY, like pulling files using URL and extract an archive into loose files in the image.
+
     STOPSIGNAL      Specify the signal that will be used to stop the container. When you run docker container stop, this signal will be passed.
+
     HEALTHCHECK     Used to specify a custom health check, to verify the container is running fine.
                     HEALTHCHECK CMD curl localhost:80
 
@@ -781,14 +801,14 @@ This results in
     RUN yum update -y &amp;&amp; yum install -y curl
     RUN yum update -y &amp;&amp; yum install -y nginx=$NGINX_VERSION
 
-    /* 
+    [
     why "yum update -y" is added twice?
 
     When you rebuild the image by changing nginx version, it will first look for the line "RUN yum update -y &amp;&amp; yum install -y curl"
     since there is not change in the RUN directive it will use the same old layer.
 
     Note: Inorder to trigger a change to any layer, we should modify the RUN directive.
-    */
+    ]
 
     CMD ["nginx", "-g", "daemon off;"]
 </code></pre>
@@ -796,7 +816,9 @@ This results in
 <pre><code>General tips:
 
 - Put things that are less likely to change on lower level layers.
+
 - Don't create unnecessary layers.
+
 - Avoid including any unnecessary files, packages, etc..
 
 Docker Multistage builds:
@@ -837,11 +859,17 @@ Example:
 </code></pre>
 <h4 id="managing-images">Managing Images</h4>
 <pre><code>docker pull                                                         To pull the images from registry, if not found locally.
+
 docker image ls                                                     To list images.
+
 docker image ls -a                                                  To list images including intermediate images.
+
 docker inspect &lt;image name&gt;                                         To get more info about the images. Provides json output.
+
 docker inspect --format "{{.Arch}} {{.Os}}"                         --format (go template) to extract specific fields.
+
 docker image rm &lt;image name&gt;    / docker rmi &lt;image name&gt;           To remove the image.
+
 docker container ls -a / docker ps -a                               To list the containers.
 </code></pre>
 <h4 id="dangling-images">Dangling Images:</h4>
@@ -859,11 +887,14 @@ This command will do a clean up.
 </code></pre>
 <h4 id="flattening-an-image-docker-doesnt-provide-an-official-way-to-do-this">Flattening an Image: Docker doesn't provide an official way to do this.</h4>
 <pre><code>Run a container -&gt; docker export (export the container to an archive) -&gt; docker import (Import the archive as new image)
+
     docker export &lt;container&gt; &gt; flat.tar
+
     cat flat.tar | docker import - flat:latest
 </code></pre>
 <h4 id="docker-storage-httpsdocsdockercomstorage">Docker Storage: https://docs.docker.com/storage/</h4>
-<pre><code>Storage drivers are also known as Graph Drivers. 
+<pre><code>Storage drivers are also known as Graph Drivers.
+
 The proper storage driver to use often depends on your operating system.
 
 overlay2        Centos8 and RHEL versions   
