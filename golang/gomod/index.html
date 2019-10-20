@@ -382,6 +382,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#migrating-modules-to-use-go-mod" title="Migrating modules to use go mod." class="md-nav__link">
+    Migrating modules to use go mod.
+  </a>
+  
+</li>
+      
       
       
       
@@ -539,6 +546,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#migrating-modules-to-use-go-mod" title="Migrating modules to use go mod." class="md-nav__link">
+    Migrating modules to use go mod.
+  </a>
+  
+</li>
+      
       
       
       
@@ -674,6 +688,15 @@ github.com/sirupsen/logrus
 github.com/sirupsen/logrus.test
 github.com/stretchr/testify/assert
 github.com/pmezard/go-difflib/difflib
+</code></pre>
+<h3 id="migrating-modules-to-use-go-mod">Migrating modules to use go mod.</h3>
+<pre><code>Step 1: Clone the repo.
+
+Step 2: go mod init
+
+Step 3: go mod tidy
+
+Step 4: go get ./...
 </code></pre>
                 
                   
