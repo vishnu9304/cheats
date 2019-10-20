@@ -375,6 +375,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#how-to-identify-why-we-are-depending-on-some-module" title="How to identify why we are depending on some module?" class="md-nav__link">
+    How to identify why we are depending on some module?
+  </a>
+  
+</li>
+      
       
       
       
@@ -525,6 +532,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#how-to-identify-why-we-are-depending-on-some-module" title="How to identify why we are depending on some module?" class="md-nav__link">
+    How to identify why we are depending on some module?
+  </a>
+  
+</li>
+      
       
       
       
@@ -642,6 +656,25 @@ golang.org/x/sys v0.0.0-20190422165155-953cdadca894/go.mod h1:h1NjWce9XRLGQEsW7w
 <p>When you do a <strong>go ge</strong>t or <strong>go build</strong> your test files are ignored. <strong>go mod tidy</strong> will also find the modules that your tests are depending on.</p>
 <h3 id="where-are-these-downloaded-modules-stores">Where are these downloaded modules stores?</h3>
 <p>It will be stored under <strong>GOPATH</strong> /go/pkg/mod</p>
+<h3 id="how-to-identify-why-we-are-depending-on-some-module">How to identify why we are depending on some module?</h3>
+<pre><code>Vishnus-Mac:mycat v01$ go mod why github.com/pmezard/go-difflib
+# github.com/pmezard/go-difflib
+(main module does not need package github.com/pmezard/go-difflib)
+
+Actually we are not using github.com/pmezard/go-difflib directly. 
+We are using some module inside it. 
+To identify that we need to add -m flag.
+
+Find something that is in github.com/pmezard/go-difflib
+
+Vishnus-Mac:mycat v01$ go mod why -m github.com/pmezard/go-difflib
+# github.com/pmezard/go-difflib
+github.com/vishnu9304/mycat
+github.com/sirupsen/logrus
+github.com/sirupsen/logrus.test
+github.com/stretchr/testify/assert
+github.com/pmezard/go-difflib/difflib
+</code></pre>
                 
                   
                 
