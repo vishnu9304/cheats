@@ -529,6 +529,25 @@
 </code></pre>
 <p>It will go to github.com download the code compliles it and place the binary under <strong>$GOPATH/bin</strong> </p>
 <h3 id="extracting-info-from-go-packages-go-doc-and-go-list">Extracting info from go packages. <strong>go doc and go list</strong></h3>
+<pre><code>Vishnus-Mac:test v01$ ls
+main.go
+
+Vishnus-Mac:test v01$ go list -f '{{ .Name }}: {{ .Doc }}: {{ .Imports }}'
+main: This is a demo!: [fmt]
+
+Vishnus-Mac:test v01$ go list -f '{{ join .Imports "\n" }}' fmt
+errors
+internal/fmtsort
+io
+math
+os
+reflect
+strconv
+sync
+unicode/utf8
+
+go list -f '{{ .Doc }}' fmt     // To list the "fmt" package documentation.
+</code></pre>
                 
                   
                 
