@@ -362,8 +362,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#commonly-used-commands" title="Commonly used commands:" class="md-nav__link">
-    Commonly used commands:
+  <a href="#commonly-used-commands" title="Commonly used commands" class="md-nav__link">
+    Commonly used commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-are-these-downloaded-modules-stores" title="Where are these downloaded modules stores?" class="md-nav__link">
+    Where are these downloaded modules stores?
   </a>
   
 </li>
@@ -505,8 +512,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#commonly-used-commands" title="Commonly used commands:" class="md-nav__link">
-    Commonly used commands:
+  <a href="#commonly-used-commands" title="Commonly used commands" class="md-nav__link">
+    Commonly used commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-are-these-downloaded-modules-stores" title="Where are these downloaded modules stores?" class="md-nav__link">
+    Where are these downloaded modules stores?
   </a>
   
 </li>
@@ -620,12 +634,14 @@ golang.org/x/sys v0.0.0-20190422165155-953cdadca894/go.mod h1:h1NjWce9XRLGQEsW7w
 <p>You will see one more additional file <strong>go.sum</strong> which contains a lot of info.</p>
 <p>On top of the version we are using we also have a HASH <strong>J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=</strong></p>
 <p>It's a cryptographic hash to track if something that got changed over time.</p>
-<h3 id="commonly-used-commands">Commonly used commands:</h3>
+<h3 id="commonly-used-commands">Commonly used commands</h3>
 <p>Command to fetch a module with the latest tag:</p>
 <pre><code>go get -u github.com/sirupsen/logrus
 </code></pre>
 <p>Let's do some clean up: <strong>go mod tidy</strong></p>
 <p>When you do a <strong>go ge</strong>t or <strong>go build</strong> your test files are ignored. <strong>go mod tidy</strong> will also find the modules that your tests are depending on.</p>
+<h3 id="where-are-these-downloaded-modules-stores">Where are these downloaded modules stores?</h3>
+<p>It will be stored under <strong>GOPATH</strong> /go/pkg/mod</p>
                 
                   
                 
