@@ -563,6 +563,21 @@ func main() {
 go get: no install location for directory /Users/v01/dev/mycat outside GOPATH
 For more details see: 'go help gopath'
 </code></pre>
+<p>Go module comes to rescuse the above scenario. We are going to go from a <strong>directory having go code to directory having go module</strong></p>
+<pre><code>Vishnus-Mac:mycat v01$ go mod init
+
+go: cannot determine module path for source directory /Users/v01/dev/mycat (outside GOPATH, no import comments)
+</code></pre>
+<p>Again it will complain as you are outside the gopath and it doesn't know what module you are initalizing.</p>
+<p>We need to provide the <strong>import path</strong></p>
+<pre><code>Vishnus-Mac:mycat v01$ go mod init github.com/vishnu9304/mycat
+
+go: creating new go.mod: module github.com/vishnu9304/mycat
+Vishnus-Mac:mycat v01$ cat go.mod
+module github.com/vishnu9304/mycat
+
+go 1.12
+</code></pre>
                 
                   
                 
