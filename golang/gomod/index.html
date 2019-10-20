@@ -361,6 +361,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#commonly-used-commands" title="Commonly used commands:" class="md-nav__link">
+    Commonly used commands:
+  </a>
+  
+</li>
+      
       
       
       
@@ -497,6 +504,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#commonly-used-commands" title="Commonly used commands:" class="md-nav__link">
+    Commonly used commands:
+  </a>
+  
+</li>
+      
       
       
       
@@ -516,18 +530,18 @@
                 
                   <h1>gomod</h1>
                 
-                <h4 id="what-is-a-go-module">What is a go module?</h4>
+                <h3 id="what-is-a-go-module">What is a go module?</h3>
 <p>A module is a way of packaging the software as simple as that.</p>
 <p>A go module is not atomic and it can contain many packages inside like a repository and it is <strong>versioned</strong>.</p>
 <p>Go follows something called Semantic Versioning to version the packages. Also called as semver.</p>
-<h4 id="oh-wait-then-what-is-the-difference-between-a-package-and-a-repository">oh wait, then what is the difference between a package and a repository?</h4>
+<h3 id="oh-wait-then-what-is-the-difference-between-a-package-and-a-repository">oh wait, then what is the difference between a package and a repository?</h3>
 <p>A package cannot be sub divided in to working pieces. If you divide the package in to two different files, still you need those two files to represent the whole pacakge.</p>
 <p>A package is an atomic thing.</p>
 <p>A repository contains many packages that can move around independently.</p>
-<h4 id="what-is-versioning-why-do-we-use-it-how-do-we-use-it">What is versioning? Why do we use it? How do we use it?</h4>
+<h3 id="what-is-versioning-why-do-we-use-it-how-do-we-use-it">What is versioning? Why do we use it? How do we use it?</h3>
 <p>Software changes over time. We need some kind of standard way of tracking these changes over period of time.</p>
 <p>That is where Semantic Versioning comes in to picture. It is a pre straight forward convention of how to name versions.</p>
-<h4 id="example">Example:</h4>
+<h3 id="example">Example:</h3>
 <pre><code>v1.0.0
 
 v1 - Major Version for every single non backward compatible versions.
@@ -536,9 +550,9 @@ v1.0 - Minor Version. We increase it when we add a new feature and not broken an
 
 v1.0.0 - Patch updates. fixing things that has broken, like security bug fixes.
 </code></pre>
-<h4 id="writing-programs-outside-the-gopath">Writing programs outside the GOPATH</h4>
+<h3 id="writing-programs-outside-the-gopath">Writing programs outside the GOPATH</h3>
 <p>Command to check default gopath: <strong>go env GOPATH</strong></p>
-<h4 id="example_1">Example:</h4>
+<h3 id="example_1">Example:</h3>
 <pre><code>package main
 
 import (
@@ -606,7 +620,7 @@ golang.org/x/sys v0.0.0-20190422165155-953cdadca894/go.mod h1:h1NjWce9XRLGQEsW7w
 <p>You will see one more additional file <strong>go.sum</strong> which contains a lot of info.</p>
 <p>On top of the version we are using we also have a HASH <strong>J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=</strong></p>
 <p>It's a cryptographic hash to track if something that got changed over time.</p>
-<p>Commonly used commands:</p>
+<h3 id="commonly-used-commands">Commonly used commands:</h3>
 <p>Command to fetch a module with the latest tag:</p>
 <pre><code>go get -u github.com/sirupsen/logrus
 </code></pre>
