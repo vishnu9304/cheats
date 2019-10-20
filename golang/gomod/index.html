@@ -571,13 +571,41 @@ go: cannot determine module path for source directory /Users/v01/dev/mycat (outs
 <p>Again it will complain as you are outside the gopath and it doesn't know what module you are initalizing.</p>
 <p>We need to provide the <strong>import path</strong></p>
 <pre><code>Vishnus-Mac:mycat v01$ go mod init github.com/vishnu9304/mycat
-
 go: creating new go.mod: module github.com/vishnu9304/mycat
+
 Vishnus-Mac:mycat v01$ cat go.mod
 module github.com/vishnu9304/mycat
 
 go 1.12
 </code></pre>
+<p>When you run <strong>go build</strong> it will pull all the dependencies and mentioned in our go code.</p>
+<pre><code>Vishnus-Mac:mycat v01$ go build
+
+Vishnus-Mac:mycat v01$ ls
+go.mod  go.sum  main.go mycat
+
+Vishnus-Mac:mycat v01$ cat go.mod
+module github.com/vishnu9304/mycat
+
+go 1.12
+
+require github.com/sirupsen/logrus v1.4.2
+
+Vishnus-Mac:mycat v01$ cat go.sum
+github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/konsorten/go-windows-terminal-sequences v1.0.1/go.mod h1:T0+1ngSBFLxvqU3pZ+m/2kptfBszLMUkC4ZK/EgS/cQ=
+github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+github.com/sirupsen/logrus v1.4.2 h1:SPIRibHv4MatM3XXNO2BJeFLZwZ2LvZgfQ5+UNI2im4=
+github.com/sirupsen/logrus v1.4.2/go.mod h1:tLMulIdttU9McNUspp0xgXVQah82FyeX6MwdIuYE2rE=
+github.com/stretchr/objx v0.1.1/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
+github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
+golang.org/x/sys v0.0.0-20190422165155-953cdadca894 h1:Cz4ceDQGXuKRnVBDTS23GTn/pU5OE2C0WrNTOYK1Uuc=
+golang.org/x/sys v0.0.0-20190422165155-953cdadca894/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+</code></pre>
+<p>Under <strong>go.mod</strong> you can see a new line <strong>require github.com/sirupsen/logrus v1.4.2</strong>. Our module depends on that module.</p>
+<p>You will see one more additional file <strong>go.sum</strong> which contains a lot of info.</p>
+<p>On top of the version we are using we also have a HASH <strong>J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=</strong></p>
+<p>It's a cryptographic hash to track if somthing go changed over time.</p>
                 
                   
                 
