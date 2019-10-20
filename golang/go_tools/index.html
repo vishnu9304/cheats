@@ -338,6 +338,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#how-to-build-a-binary-for-windows-cross-compilation-architecture-from-mac" title="How to build a binary for windows (Cross compilation) architecture from Mac?" class="md-nav__link">
+    How to build a binary for windows (Cross compilation) architecture from Mac?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-will-go-install-do" title="What will go install do ?" class="md-nav__link">
+    What will go install do ?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-will-go-get-do" title="What will go get do?" class="md-nav__link">
+    What will go get do?
+  </a>
+  
+</li>
+      
       
       
       
@@ -439,6 +460,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#how-to-build-a-binary-for-windows-cross-compilation-architecture-from-mac" title="How to build a binary for windows (Cross compilation) architecture from Mac?" class="md-nav__link">
+    How to build a binary for windows (Cross compilation) architecture from Mac?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-will-go-install-do" title="What will go install do ?" class="md-nav__link">
+    What will go install do ?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-will-go-get-do" title="What will go get do?" class="md-nav__link">
+    What will go get do?
+  </a>
+  
+</li>
+      
       
       
       
@@ -461,8 +503,17 @@
                 <h3 id="how-to-format-the-code">How to format the code?</h3>
 <pre><code> go fmt main.go
 
- go fmt -d main.go  This commamd will show the difference.
+ go fmt -d main.go      This command will show the difference.
 </code></pre>
+<h3 id="how-to-build-a-binary-for-windows-cross-compilation-architecture-from-mac">How to build a binary for windows (Cross compilation) architecture from Mac?</h3>
+<pre><code>GOOS=windows go build main.go
+</code></pre>
+<h3 id="what-will-go-install-do">What will <strong>go install</strong> do ?</h3>
+<p>It will compile the code and install the resulting binary under <strong>$GOPATH/bin</strong> directory.</p>
+<h3 id="what-will-go-get-do">What will <strong>go get</strong> do?</h3>
+<pre><code>go get github.com/golang/example/hello
+</code></pre>
+<p>It will go to github.com download the code compliles it and place the binary under <strong>$GOPATH/bin</strong> </p>
                 
                   
                 
