@@ -354,6 +354,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#example_1" title="Example:" class="md-nav__link">
+    Example:
+  </a>
+  
+</li>
+      
       
       
       
@@ -483,6 +490,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#example_1" title="Example:" class="md-nav__link">
+    Example:
+  </a>
+  
+</li>
+      
       
       
       
@@ -524,6 +538,24 @@ v1.0.0 - Patch updates. fixing things that has broken, like security bug fixes.
 </code></pre>
 <h4 id="writing-programs-outside-the-gopath">Writing programs outside the GOPATH</h4>
 <p>Command to check default gopath: <strong>go env GOPATH</strong></p>
+<h4 id="example_1">Example:</h4>
+<pre><code>package main
+
+import (
+    "fmt"
+    "log"
+    "os"
+
+    "github.com/sirupsen/logrus"
+)
+
+func main() {
+    _, err := io.Copy(os.Stdout, os.Stdin)
+    if err != {
+        logrus.Fatal(err)
+    }
+}
+</code></pre>
                 
                   
                 
