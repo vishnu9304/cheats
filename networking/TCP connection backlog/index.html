@@ -554,10 +554,8 @@
 <p>1 - The incoming connections get queued up, waiting for the application to accept(2) them.</p>
 <p>2 - The queue that holds established connections is (of course) of finite length. </p>
 <p>3 - The current version of the linux uses 2 distinct queues.</p>
-<pre><code>SYN Queue with a size specified by the system wide setting **/proc/sys/net/ipv4/tcp_max_syn_backlog**
-
-Accept Queue with a size specified by the application,if not specified it will defaults to **/proc/sys/net/core/somaxconn**
-</code></pre>
+<p><strong>SYN Queue</strong> with a size specified by the system wide setting <strong>/proc/sys/net/ipv4/tcp_max_syn_backlog</strong></p>
+<p><strong>Accept Queue</strong> with a size specified by the application,if not specified it will defaults to <strong>/proc/sys/net/core/somaxconn</strong></p>
 <h4 id="what-will-happen-if-accept-queue-is-full">What will happen if <strong>Accept Queue</strong> is full?</h4>
 <p>If the TCP implementation in Linux receives the ACK packet of the 3-way handshake and the accept queue is full, it will basically ignore that packet.</p>
 <p><strong>Note:</strong>  There is a timer associated with the SYN RECEIVED state.</p>
