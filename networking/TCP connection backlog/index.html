@@ -408,6 +408,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#queue-size-limits" title="Queue size limits" class="md-nav__link">
+    Queue size limits
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" title="Troubleshooting:" class="md-nav__link">
+    Troubleshooting:
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -524,6 +538,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#queue-size-limits" title="Queue size limits" class="md-nav__link">
+    Queue size limits
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" title="Troubleshooting:" class="md-nav__link">
+    Troubleshooting:
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -549,13 +577,16 @@
                   <h1>TCP Backlogs</h1>
                 
                 <h3 id="linux-tcp-backlogs">Linux TCP Backlogs</h3>
-<p>Ref: https://bunn.cc/2017/syn-backlog/</p>
+<p><strong>References:</strong></p>
+<p>https://bunn.cc/2017/syn-backlog/</p>
+<p>https://blog.cloudflare.com/syn-packet-handling-in-the-wild/</p>
+<p>https://eklitzke.org/how-tcp-sockets-work</p>
 <p><img alt="Render Graph" src="https://blog.cloudflare.com/content/images/2018/01/all-1.jpeg" /></p>
 <h4 id="key-points">Key Points</h4>
 <p>1 - The incoming connections get queued up, waiting for the application to accept(2) them.</p>
 <p>2 - The queue that holds established connections is (of course) of finite length. </p>
 <p>3 - Each bound socket, in the <strong>"LISTENING"</strong> TCP state has two separate queues.</p>
-<pre><code>The SYN Queue: 
+<pre><code>The SYN Queue:
 The SYN Queue stores inbound SYN packets.
 It's responsible for sending out SYN+ACK packets and retrying them on timeout.
 On Linux the number of retries is configured with: sysctl net.ipv4.tcp_synack_retries
@@ -575,6 +606,25 @@ The Accept Queue contains fully established connections and ready to be picked u
 <pre><code>Note: If the accept queue is full, then the kernel will impose a limit on the rate at which SYN packets are accepted.
 </code></pre>
 <p>If too many SYN packets are received, some of them will be dropped.</p>
+<h4 id="queue-size-limits">Queue size limits</h4>
+<p>The maximum allowed length of both the Accept and SYN Queues is taken from the backlog parameter passed to the listen(2) syscall by the application.</p>
+<p>For example, this sets the Accept and SYN Queue sizes to 1,024:</p>
+<pre><code>listen(sfd, 1024)
+</code></pre>
+<p>This SYN Queue cap used to be configured by the net.ipv4.tcp_max_syn_backlog toggle, but this isn't the case anymore.</p>
+<p>Nowadays <strong>net.core.somaxconn</strong> caps both queue sizes.</p>
+<h4 id="troubleshooting">Troubleshooting:</h4>
+<p>To peek into the <strong>SYN Queue</strong> on Linux we can use the <strong>ss</strong> command and look for <strong>SYN-RECV</strong> sockets.</p>
+<pre><code>$ ss -n state syn-recv sport = :80 | wc -l
+119
+$ ss -n state syn-recv sport = :443 | wc -l
+78
+
+Note: don't confuse Recv-Q and Send-Q fields with the SYN Queue and ACCEPT Queue.
+
+SYN Queue and ACCEPT Queues are used per application.
+Recv-Q and Send-Q are used per TCP connection.
+</code></pre>
                 
                   
                 
