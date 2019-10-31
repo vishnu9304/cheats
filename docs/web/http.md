@@ -1,20 +1,22 @@
 #### Fragments and Queries in HTTP url:
 
     Example:    https://www.yahoo.com/search?q=tesla%20research
-            Query: search?q=tesla%20research
-
+                
+                Query: search?q=tesla%20research
 
     Example:    https://www.yahoo.com/search?q=tesla%20research#space%20research
-            Query: #space research
-            Which means under "q=tesla%20research" resource scroll to "#space" section.
+
+                Query: #space research
+                
+                Which means under "q=tesla%20research" resource scroll to "#space" section.
 
 #### HTTP Request Methods:
 
-    [GET]         Retreive a resource
-    [POST]        Update a resource
-    [PUT]         Store a resource
-    [DELETE]      Remove a resource
-    [HEAD]        Reterive the headers for a resource
+    [GET]               Retreive a resource
+    [POST]              Update a resource
+    [PUT]               Store a resource
+    [DELETE]            Remove a resource
+    [HEAD               Reterive the headers for a resource
 
     telnet yahoo.com 80
     GET /yahoo.com/yahoomail.jpg    HTTP/1.1

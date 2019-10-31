@@ -31,25 +31,35 @@
     Active attacks: Data will modified by unauthorized user.
 
     Passive attacks types:
+
         Eavesdropping - No modification will be done to the data, the attacker will just listen to the messages.
         Traffic Analysis - Just Analysing the traffic. Based on the traffic flow access will be gained.
     
     Active attacks types:
+
         Masquerade attacks - Receiver will receive the data from 3rd party in the name of sender.
+
         Replay attacks - Alice (A) sends her hashed password to Bob (B). Eve (E) sniffs the hash and replays it pretending like alice.
+
         Data Modification attacks - Sender sends the data, the attacker takes it and modifies it send it to receiver.
+
         Denial Of Service attacks - Disrupts the services provided by the server.
 
 #### Security Services
 
     Authentication - Acess control. Prevent un-authorized access.
+
     Authorization - Verification of user identity.
+
     Confidentiality - Securely sharing the data.
+
     Integrity - Make sure the data is not modified during transmission.
-    Non-Repudiation - 
+
+    Non-Repudiation.
 
     Substitution Techniques - The characters are replaced with corresponding cipher texts which are calulated mathematically (Vulnerable to attacks, suitable only for short length methods).
                               Example: Caesar cipher
+                              
     Transposition Techniques - Re-arrange the order of bit positions.
                               Example: Rail fence Cipher
                                         Columnar transposition

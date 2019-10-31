@@ -6,10 +6,15 @@
 #### Installing Docker CE
 
     1 - sudo yum install -y device-mapper-persistent-data lvm2
+
     2 - sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
     3 - sudo yum install -y docker-ce-18.09.5 docker-ce-cli-18.09.5 containerd.io
+
     4 - sudo systemctl start docker
+
     5 - sudo systemctl enable docker 
+
     6 - sudo useradd -a -G docker <username> // For allowing normal users to execute docker commands, add them under docker group.
 
 #### Selcting Storage Driver
@@ -32,9 +37,13 @@
         }
 
     When you start a container, a thin writable container layer is added on top of the other layers.
+
     Any changes the container makes to the filesystem are stored here.
+
     The major difference between a container and an image is the top writable layer.
+
     When the container is deleted, the writable layer is also deleted. 
+
     The underlying image remains unchanged.
     
     Container Size On Disk: docker ps -s    // https://docs.docker.com/storage/storagedriver/
@@ -44,6 +53,7 @@
 #### Running the docker Container: (docker run command)
 
     Some of the common falgs used with "docker run" command.
+
     Syntax: docker run [options] image[:tag] [command] [args]
     -d      Run container in detached mode.
     --name  For providing a descriptive name to the container.
@@ -93,6 +103,7 @@
         3 - Faster image build
 
         docker image pull IMAGE[:TAG]   To pull the docker image.
+
         docker image history IMAGE      To list the layers used by the image.
     
 #### Components Of Dockerfile
@@ -103,19 +114,28 @@
         These instructions are called directives.
 
         FROM            Starts with a new build stage and sets the base image.
+
         ENV             To set environment variables.
+
         RUN             Create new filesystem layer by running a command.
+
         CMD             Default command to run when the container is executed.
+
         EXPOSE          Technically it will not expose any ports. Documents which ports are intended to be published when running a container.
+
         WORKDIR         Sets the current working directory for subsequent directives such as ADD,COPY,CMD,ENTRYPOINT
                         We can have multiple WORKDIR directives inside the docker file.
                         WORKDIR /var
                         WORKDIR www         //Relative path
                         WORKDIR html
                         The above three WORKDIR directives are equivalent to /var/www/html      //Absolute path
+
         COPY            Copy files from local machine to the image
+
         ADD             Similar to copy, but little advanced than COPY, like pulling files using URL and extract an archive into loose files in the image.
+
         STOPSIGNAL      Specify the signal that will be used to stop the container. When you run docker container stop, this signal will be passed.
+
         HEALTHCHECK     Used to specify a custom health check, to verify the container is running fine.
                         HEALTHCHECK CMD curl localhost:80
 
@@ -130,14 +150,14 @@
         RUN yum update -y && yum install -y curl
         RUN yum update -y && yum install -y nginx=$NGINX_VERSION
 
-        /* 
+        [
         why "yum update -y" is added twice?
 
         When you rebuild the image by changing nginx version, it will first look for the line "RUN yum update -y && yum install -y curl"
         since there is not change in the RUN directive it will use the same old layer.
 
         Note: Inorder to trigger a change to any layer, we should modify the RUN directive.
-        */
+        ]
 
         CMD ["nginx", "-g", "daemon off;"]
 
@@ -146,7 +166,9 @@
     General tips:
 
     - Put things that are less likely to change on lower level layers.
+
     - Don't create unnecessary layers.
+  
     - Avoid including any unnecessary files, packages, etc..
 
     Docker Multistage builds:
@@ -188,11 +210,17 @@
 #### Managing Images
 
     docker pull                                                         To pull the images from registry, if not found locally.
+
     docker image ls                                                     To list images.
+
     docker image ls -a                                                  To list images including intermediate images.
+
     docker inspect <image name>                                         To get more info about the images. Provides json output.
+
     docker inspect --format "{{.Arch}} {{.Os}}"                         --format (go template) to extract specific fields.
+
     docker image rm <image name>    / docker rmi <image name>           To remove the image.
+
     docker container ls -a / docker ps -a                               To list the containers.
 
 #### Dangling Images:
@@ -213,13 +241,16 @@
 #### Flattening an Image: Docker doesn't provide an official way to do this.
 
     Run a container -> docker export (export the container to an archive) -> docker import (Import the archive as new image)
+
         docker export <container> > flat.tar
+
         cat flat.tar | docker import - flat:latest
 
 
 #### Docker Storage: https://docs.docker.com/storage/
 
     Storage drivers are also known as Graph Drivers. 
+    
     The proper storage driver to use often depends on your operating system.
 
     overlay2        Centos8 and RHEL versions   
