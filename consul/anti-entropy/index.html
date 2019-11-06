@@ -36,7 +36,7 @@
     
     
       
-        <title>TCP Backlogs - CHEATS</title>
+        <title>Anti entropy - CHEATS</title>
       
     
     
@@ -83,7 +83,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#linux-tcp-backlogs" tabindex="1" class="md-skip">
+      <a href="#anti-entropy" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -109,7 +109,7 @@
                 CHEATS
               </span>
               <span class="md-header-nav__topic">
-                TCP Backlogs
+                Anti entropy
               </span>
             
           
@@ -322,12 +322,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       NETWORKING
@@ -345,7 +343,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../Linux Networking/" title="Networking" class="md-nav__link">
+    <a href="../../networking/Linux Networking/" title="Networking" class="md-nav__link">
       Networking
     </a>
   </li>
@@ -355,86 +353,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        TCP Backlogs
-      </label>
-    
-    <a href="./" title="TCP Backlogs" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../networking/TCP connection backlog/" title="TCP Backlogs" class="md-nav__link">
       TCP Backlogs
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#linux-tcp-backlogs" title="Linux TCP Backlogs" class="md-nav__link">
-    Linux TCP Backlogs
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-points" title="Key Points" class="md-nav__link">
-    Key Points
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-will-happen-if-accept-queue-is-full" title="What will happen if Accept Queue is full?" class="md-nav__link">
-    What will happen if Accept Queue is full?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-is-half-open-connections" title="What is Half Open Connections?" class="md-nav__link">
-    What is Half Open Connections?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#queue-size-limits" title="Queue size limits" class="md-nav__link">
-    Queue size limits
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#troubleshooting" title="Troubleshooting:" class="md-nav__link">
-    Troubleshooting:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -510,50 +433,9 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#linux-tcp-backlogs" title="Linux TCP Backlogs" class="md-nav__link">
-    Linux TCP Backlogs
+  <a href="#anti-entropy" title="Anti-Entropy" class="md-nav__link">
+    Anti-Entropy
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-points" title="Key Points" class="md-nav__link">
-    Key Points
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-will-happen-if-accept-queue-is-full" title="What will happen if Accept Queue is full?" class="md-nav__link">
-    What will happen if Accept Queue is full?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-is-half-open-connections" title="What is Half Open Connections?" class="md-nav__link">
-    What is Half Open Connections?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#queue-size-limits" title="Queue size limits" class="md-nav__link">
-    Queue size limits
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#troubleshooting" title="Troubleshooting:" class="md-nav__link">
-    Troubleshooting:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -574,57 +456,13 @@
               
                 
                 
-                  <h1>TCP Backlogs</h1>
+                  <h1>Anti entropy</h1>
                 
-                <h3 id="linux-tcp-backlogs">Linux TCP Backlogs</h3>
-<p><strong>References:</strong></p>
-<p>https://bunn.cc/2017/syn-backlog/</p>
-<p>https://blog.cloudflare.com/syn-packet-handling-in-the-wild/</p>
-<p>https://eklitzke.org/how-tcp-sockets-work</p>
-<p><img alt="Render Graph" src="https://blog.cloudflare.com/content/images/2018/01/all-1.jpeg" /></p>
-<h4 id="key-points">Key Points</h4>
-<p>1 - The incoming connections get queued up, waiting for the application to accept(2) them.</p>
-<p>2 - The queue that holds established connections is (of course) of finite length. </p>
-<p>3 - Each bound socket, in the <strong>"LISTENING"</strong> TCP state has two separate queues.</p>
-<pre><code>The SYN Queue:
-The SYN Queue stores inbound SYN packets.
-It's responsible for sending out SYN+ACK packets and retrying them on timeout.
-On Linux the number of retries is configured with: sysctl net.ipv4.tcp_synack_retries
-
-The Accept Queue: 
-The Accept Queue contains fully established connections and ready to be picked up by the application.
-</code></pre>
-<h4 id="what-will-happen-if-accept-queue-is-full">What will happen if <strong>Accept Queue</strong> is full?</h4>
-<p>If the TCP implementation in Linux receives the ACK packet of the 3-way handshake and the accept queue is full, it will basically ignore that packet.</p>
-<pre><code>Note: There is a timer associated with the SYN RECEIVED state.
-</code></pre>
-<p>If the <strong>ACK</strong> packet is not received (or if it is ignored, as in the case considered here), then the TCP implementation will resend the <strong>SYN/ACK</strong> packet (with a certain number of retries specified by <strong>/proc/sys/net/ipv4/tcp_synack_retries</strong> and using an exponential backoff algorithm).</p>
-<p>After retries it will sent <strong>RST</strong> packet.</p>
-<h4 id="what-is-half-open-connections">What is Half Open Connections?</h4>
-<p>If the client first waits for data from the server and the server never reduces the backlog, then the end result is that on the client side, the connection is in state ESTABLISHED, while on the server side, the connection is considered CLOSED.</p>
-<p>This means that we end up with a half-open connection!</p>
-<pre><code>Note: If the accept queue is full, then the kernel will impose a limit on the rate at which SYN packets are accepted.
-</code></pre>
-<p>If too many SYN packets are received, some of them will be dropped.</p>
-<h4 id="queue-size-limits">Queue size limits</h4>
-<p>The maximum allowed length of both the Accept and SYN Queues is taken from the backlog parameter passed to the listen(2) syscall by the application.</p>
-<p>For example, this sets the Accept and SYN Queue sizes to 1,024:</p>
-<pre><code>listen(sfd, 1024)
-</code></pre>
-<p>This SYN Queue cap used to be configured by the <strong>net.ipv4.tcp_max_syn_backlog</strong> toggle, but this isn't the case anymore.</p>
-<p>Nowadays <strong>net.core.somaxconn</strong> caps both queue sizes.</p>
-<h4 id="troubleshooting">Troubleshooting:</h4>
-<p>To peek into the <strong>SYN Queue</strong> on Linux we can use the <strong>ss</strong> command and look for <strong>SYN-RECV</strong> sockets.</p>
-<pre><code>$ ss -n state syn-recv sport = :80 | wc -l
-119
-$ ss -n state syn-recv sport = :443 | wc -l
-78
-
-Note: don't confuse Recv-Q and Send-Q fields with the SYN Queue and ACCEPT Queue.
-
-SYN Queue and ACCEPT Queues are used per application.
-Recv-Q and Send-Q are used per TCP connection.
-</code></pre>
+                <h3 id="anti-entropy">Anti-Entropy</h3>
+<p>How checks are registered?</p>
+<p>How catalog is populated?</p>
+<p>How health status information is updated?</p>
+<p>Two moving pieces: <strong>Agent</strong> and <strong>Catalog</strong> </p>
                 
                   
                 
@@ -641,41 +479,6 @@ Recv-Q and Send-Q are used per TCP connection.
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../Linux Networking/" title="Networking" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                Networking
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../../web/http/" title="HTTP" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                HTTP
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
