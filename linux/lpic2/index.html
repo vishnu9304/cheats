@@ -36,7 +36,7 @@
     
     
       
-        <title>TCP Backlogs - CHEATS</title>
+        <title>Troubleshoot Resource Utilization - CHEATS</title>
       
     
     
@@ -83,7 +83,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#linux-tcp-backlogs" tabindex="1" class="md-skip">
+      <a href="#measure-and-troubleshoot-resource-utilization" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -109,7 +109,7 @@
                 CHEATS
               </span>
               <span class="md-header-nav__topic">
-                TCP Backlogs
+                Troubleshoot Resource Utilization
               </span>
             
           
@@ -346,10 +346,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
     
     <label class="md-nav__link" for="nav-5">
       Linux
@@ -365,56 +367,6 @@
           
           
 
-
-  <li class="md-nav__item">
-    <a href="../../linux/lpic2/" title="Troubleshoot Resource Utilization" class="md-nav__link">
-      Troubleshoot Resource Utilization
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
-    
-    <label class="md-nav__link" for="nav-6">
-      NETWORKING
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
-        NETWORKING
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Linux Networking/" title="Networking" class="md-nav__link">
-      Networking
-    </a>
-  </li>
-
-        
-          
-          
-          
-
   
 
 
@@ -424,11 +376,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        TCP Backlogs
+        Troubleshoot Resource Utilization
       </label>
     
-    <a href="./" title="TCP Backlogs" class="md-nav__link md-nav__link--active">
-      TCP Backlogs
+    <a href="./" title="Troubleshoot Resource Utilization" class="md-nav__link md-nav__link--active">
+      Troubleshoot Resource Utilization
     </a>
     
       
@@ -440,44 +392,65 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#linux-tcp-backlogs" title="Linux TCP Backlogs" class="md-nav__link">
-    Linux TCP Backlogs
+  <a href="#measure-and-troubleshoot-resource-utilization" title="Measure and Troubleshoot Resource Utilization" class="md-nav__link">
+    Measure and Troubleshoot Resource Utilization
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#key-points" title="Key Points" class="md-nav__link">
-    Key Points
+  <a href="#uptime" title="uptime" class="md-nav__link">
+    uptime
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#what-will-happen-if-accept-queue-is-full" title="What will happen if Accept Queue is full?" class="md-nav__link">
-    What will happen if Accept Queue is full?
+  <a href="#iostat" title="iostat" class="md-nav__link">
+    iostat
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#what-is-half-open-connections" title="What is Half Open Connections?" class="md-nav__link">
-    What is Half Open Connections?
+  <a href="#sar" title="sar" class="md-nav__link">
+    sar
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#queue-size-limits" title="Queue size limits" class="md-nav__link">
-    Queue size limits
+  <a href="#memory-free" title="Memory: free" class="md-nav__link">
+    Memory: free
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#troubleshooting" title="Troubleshooting:" class="md-nav__link">
-    Troubleshooting:
+  <a href="#memory-vmstat" title="Memory: vmstat" class="md-nav__link">
+    Memory: vmstat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disk-and-files-lsof" title="Disk and Files: lsof" class="md-nav__link">
+    Disk and Files: lsof
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ps-pstree-top" title="ps, pstree, top" class="md-nav__link">
+    ps, pstree, top
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iotop-ss-netstat" title="iotop, ss, netstat" class="md-nav__link">
+    iotop, ss, netstat
   </a>
   
 </li>
@@ -495,6 +468,54 @@
   
 </nav>
     
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      NETWORKING
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        NETWORKING
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../networking/Linux Networking/" title="Networking" class="md-nav__link">
+      Networking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../networking/TCP connection backlog/" title="TCP Backlogs" class="md-nav__link">
+      TCP Backlogs
+    </a>
   </li>
 
         
@@ -582,44 +603,65 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#linux-tcp-backlogs" title="Linux TCP Backlogs" class="md-nav__link">
-    Linux TCP Backlogs
+  <a href="#measure-and-troubleshoot-resource-utilization" title="Measure and Troubleshoot Resource Utilization" class="md-nav__link">
+    Measure and Troubleshoot Resource Utilization
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#key-points" title="Key Points" class="md-nav__link">
-    Key Points
+  <a href="#uptime" title="uptime" class="md-nav__link">
+    uptime
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#what-will-happen-if-accept-queue-is-full" title="What will happen if Accept Queue is full?" class="md-nav__link">
-    What will happen if Accept Queue is full?
+  <a href="#iostat" title="iostat" class="md-nav__link">
+    iostat
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#what-is-half-open-connections" title="What is Half Open Connections?" class="md-nav__link">
-    What is Half Open Connections?
+  <a href="#sar" title="sar" class="md-nav__link">
+    sar
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#queue-size-limits" title="Queue size limits" class="md-nav__link">
-    Queue size limits
+  <a href="#memory-free" title="Memory: free" class="md-nav__link">
+    Memory: free
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#troubleshooting" title="Troubleshooting:" class="md-nav__link">
-    Troubleshooting:
+  <a href="#memory-vmstat" title="Memory: vmstat" class="md-nav__link">
+    Memory: vmstat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disk-and-files-lsof" title="Disk and Files: lsof" class="md-nav__link">
+    Disk and Files: lsof
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ps-pstree-top" title="ps, pstree, top" class="md-nav__link">
+    ps, pstree, top
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iotop-ss-netstat" title="iotop, ss, netstat" class="md-nav__link">
+    iotop, ss, netstat
   </a>
   
 </li>
@@ -646,57 +688,114 @@
               
                 
                 
-                  <h1>TCP Backlogs</h1>
+                  <h1>Troubleshoot Resource Utilization</h1>
                 
-                <h3 id="linux-tcp-backlogs">Linux TCP Backlogs</h3>
-<p><strong>References:</strong></p>
-<p>https://bunn.cc/2017/syn-backlog/</p>
-<p>https://blog.cloudflare.com/syn-packet-handling-in-the-wild/</p>
-<p>https://eklitzke.org/how-tcp-sockets-work</p>
-<p><img alt="Render Graph" src="https://blog.cloudflare.com/content/images/2018/01/all-1.jpeg" /></p>
-<h4 id="key-points">Key Points</h4>
-<p>1 - The incoming connections get queued up, waiting for the application to accept(2) them.</p>
-<p>2 - The queue that holds established connections is (of course) of finite length. </p>
-<p>3 - Each bound socket, in the <strong>"LISTENING"</strong> TCP state has two separate queues.</p>
-<pre><code>The SYN Queue:
-The SYN Queue stores inbound SYN packets.
-It's responsible for sending out SYN+ACK packets and retrying them on timeout.
-On Linux the number of retries is configured with: sysctl net.ipv4.tcp_synack_retries
+                <h3 id="measure-and-troubleshoot-resource-utilization">Measure and Troubleshoot Resource Utilization</h3>
+<h4 id="uptime">uptime</h4>
+<p>The current time, how long the system has been running, how many users are currently logged on, and the system load averages for the past 1, 5, and 15 minutes.</p>
+<pre><code>05:25:34 up 0 min,  1 user,  load average: 0.39, 0.10, 0.03
+</code></pre>
+<p><strong>Note:</strong> Uptime depends on binary formatted file "/var/run/utmp".</p>
+<hr />
+<h4 id="iostat">iostat</h4>
+<p>Report  Central Processing Unit (CPU) statistics and input/output statistics for devices, partitions and network filesystems (NFS).</p>
+<p>The iostat command generates three types of reports:</p>
+<ol>
+<li>CPU Utilization report</li>
+<li>Device Utilization report</li>
+<li>Network Filesystem report</li>
+</ol>
+<p>Display only CPU Utilization report: <strong>iostat -c</strong></p>
+<p>Display only disk/block device stats: <strong>iostat -d</strong></p>
+<p>Display CPU Utilization report at regular interval for 'n' number of times: <strong>iostat -c 2 5</strong> (Every 2 seconds for 5 times)</p>
+<p><strong>Note:</strong> refer man pages if you don't understand the keywords displayed in the output.</p>
+<p><strong>Example:</strong> %iowait, the percentage of time that the CPU or CPUs were idle during which the system had an outstanding disk I/O request.</p>
+<hr />
+<h4 id="sar">sar</h4>
+<p>sar - Collect, report, or save system activity information.</p>
+<p>sar provides historical stats on disk utilization for block devices and CPU.</p>
+<p>Display CPU stats: <strong>sar | head</strong></p>
+<p>Display block devices stats: <strong>sar -d</strong></p>
+<p><strong>Note:</strong> sar command is provided by <strong>sysstat</strong> package (provides iostat aswell).
+When you install sysstat you have to start and enable it. </p>
+<p>When you start <strong>sysstat</strong> utility it creates a file under <strong>/var/log/sa/sa[num]</strong>. This is where it stores all the stats for every 10mins.
+<strong>[num]</strong> two digit number represents the date. It will be recycled every <strong>30days</strong>.</p>
+<p><strong>/var/log/sa/sa[num]</strong> is binay formatted. <strong>sar</strong> is desined to read this file and generate reports.</p>
+<hr />
+<h4 id="memory-free">Memory: free</h4>
+<p><strong>free</strong> Display amount of free and used memory in the system.</p>
+<p><strong>free -m -h -s 1</strong> Display the output in MB / Shorten / Display the results for seconds until three iterations.</p>
+<p>free -m</p>
+<pre><code>[v01@equatescrates ~]$ free -m
+         total       used       free     shared    buffers     cached
+Mem:          3705        807       2897          0         61        438
+-/+ buffers/cache:        306       3398
+Swap:            0          0          0
+</code></pre>
+<p>According to above output we have only have <strong>2897 mb</strong> of memory free.</p>
+<p>But, actual available free memory is <strong>free(2897) + cached(438) + buffers(61)</strong> = 3398</p>
+<p><strong>Major Page Fault:</strong> is a request done to fetch pages from the hard disk and buffer it to RAM.</p>
+<p><strong>Minor Page Fault:</strong> If the data is present in the RAM buffer cache, the processor can issue a Minor Page fault.</p>
+<p><a href="https://www.slashroot.in/linux-system-io-monitoring">https://www.slashroot.in/linux-system-io-monitoring</a> article explains the logic behind the free command.</p>
+<hr />
+<h4 id="memory-vmstat">Memory: vmstat</h4>
+<p><strong>vmstat</strong> provides full summary of all memory utilization (idle memory/buffer memory etc..) on our system.</p>
+<pre><code>procs -----------memory---------- ---swap-- -----io---- --system-- -----cpu-----
+r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+0  0      0 1991612 262060 871784    0    0    35    30  178  263  2  1 95  2  0
+</code></pre>
+<p>Display active/inactive memory: <strong>vmstat -a</strong></p>
+<p><strong>Active Memory:</strong> The memory that is being used by a particular process.
+<strong>Inactive Memory:</strong> The pages which have not been accessed "recently".</p>
+<p>Run every 5 seconds: <strong>vmstat 5</strong></p>
+<p>Run every 5 seconds with a timestamp: <strong>vmstat 5 -t</strong></p>
+<p>Display a table of various event counters and memory statistics: <strong>vmstat -s</strong></p>
+<hr />
+<h4 id="disk-and-files-lsof">Disk and Files: lsof</h4>
+<p>Example: Let's say you have identified busy disk or high cpu utilization using above discussed command.</p>
+<p>To find what files, utilities or applications are open and might be using that. We can look at that by system and end users.</p>
+<p>Display number of file currently open: <strong>lsof | wc -l</strong></p>
+<p>Display number of files that are opened by a particular user: <strong>lsof -u [user] | wc -l</strong></p>
+<hr />
+<h4 id="ps-pstree-top">ps, pstree, top</h4>
+<p>How do I get detailed information about process running on our system?</p>
+<p>Display all running processes on the system: <strong>ps -e</strong></p>
+<p>Diplay full format: <strong>ps -ef</strong></p>
+<p>Display the process hierarchy: <strong>pstree</strong></p>
+<p>Display the process hierarchy and highlight the current process: <strong>pstree -h</strong></p>
+<p>Display the process hierarchy along with pid's and highlight the current process: <strong>pstree -h -p</strong></p>
+<p>Display the process hierarchy along with pid's and highlight the current process along with command line parameters: <strong>pstree -h -p -a</strong></p>
+<p><strong>Note: All of the commands are great. But they are not interactive.</strong></p>
+<p><strong>top</strong> command used to get process information in an interactive way.</p>
+<p>Before that we need to understand <strong>what a load average is?</strong> and <strong>what are tasks?</strong></p>
+<p><strong>Notes for top command</strong>: There are flags that are used to change the behaviour of the top command.</p>
+<p>Search online for more flags.</p>
+<pre><code>Press "f" to add or remove fields
 
-The Accept Queue: 
-The Accept Queue contains fully established connections and ready to be picked up by the application.
-</code></pre>
-<h4 id="what-will-happen-if-accept-queue-is-full">What will happen if <strong>Accept Queue</strong> is full?</h4>
-<p>If the TCP implementation in Linux receives the ACK packet of the 3-way handshake and the accept queue is full, it will basically ignore that packet.</p>
-<pre><code>Note: There is a timer associated with the SYN RECEIVED state.
-</code></pre>
-<p>If the <strong>ACK</strong> packet is not received (or if it is ignored, as in the case considered here), then the TCP implementation will resend the <strong>SYN/ACK</strong> packet (with a certain number of retries specified by <strong>/proc/sys/net/ipv4/tcp_synack_retries</strong> and using an exponential backoff algorithm).</p>
-<p>After retries it will sent <strong>RST</strong> packet.</p>
-<h4 id="what-is-half-open-connections">What is Half Open Connections?</h4>
-<p>If the client first waits for data from the server and the server never reduces the backlog, then the end result is that on the client side, the connection is in state ESTABLISHED, while on the server side, the connection is considered CLOSED.</p>
-<p>This means that we end up with a half-open connection!</p>
-<pre><code>Note: If the accept queue is full, then the kernel will impose a limit on the rate at which SYN packets are accepted.
-</code></pre>
-<p>If too many SYN packets are received, some of them will be dropped.</p>
-<h4 id="queue-size-limits">Queue size limits</h4>
-<p>The maximum allowed length of both the Accept and SYN Queues is taken from the backlog parameter passed to the listen(2) syscall by the application.</p>
-<p>For example, this sets the Accept and SYN Queue sizes to 1,024:</p>
-<pre><code>listen(sfd, 1024)
-</code></pre>
-<p>This SYN Queue cap used to be configured by the <strong>net.ipv4.tcp_max_syn_backlog</strong> toggle, but this isn't the case anymore.</p>
-<p>Nowadays <strong>net.core.somaxconn</strong> caps both queue sizes.</p>
-<h4 id="troubleshooting">Troubleshooting:</h4>
-<p>To peek into the <strong>SYN Queue</strong> on Linux we can use the <strong>ss</strong> command and look for <strong>SYN-RECV</strong> sockets.</p>
-<pre><code>$ ss -n state syn-recv sport = :80 | wc -l
-119
-$ ss -n state syn-recv sport = :443 | wc -l
-78
+"shift + R" to sort it in reverse, the process with less cpu time first.
 
-Note: don't confuse Recv-Q and Send-Q fields with the SYN Queue and ACCEPT Queue.
+Press "n" then 5 for top five process.
 
-SYN Queue and ACCEPT Queues are used per application.
-Recv-Q and Send-Q are used per TCP connection.
+Press "d" to change the update duration.
+
+Press "k" to kill and enter the "PID" number to kill a process. You can pass any valid linux kill signal (default is 15).
 </code></pre>
+<hr />
+<h4 id="iotop-ss-netstat">iotop, ss, netstat</h4>
+<p><strong>ss</strong> command is similar to netstat, the <strong>ss</strong> command is used to dump the socket statistics.</p>
+<p><strong>netstat</strong> uses <strong>/proc/net/tcp</strong> to gather system network information, while <strong>ss</strong> queries the kernel directly using the Netlink socket interface.s</p>
+<p><strong>iotop:</strong></p>
+<p>The top command shows the Memory and CPU usage for open programs, iotop shows disk usage information for open processes.</p>
+<p>To run on non-interactive mode: <strong>iotop -b (or) iotop --batch</strong></p>
+<p>To set the number of interactions before quitting: <strong>iotop -N 10 (or) iotop --iter=10</strong></p>
+<p>To set the delay between interactions: <strong>iotop -d 10 (or) iotop --delay=10</strong></p>
+<p>To monitor particular processes: <strong>iotop -p 1234 2345 3456 (or) iotop --pid=1234</strong></p>
+<p>To monitor a list of users: <strong>iotop -u mike mark (or) iotop --user=mike</strong></p>
+<p>To show only processes: <strong>iotop -P (or) iotop --processes</strong></p>
+<p>To Show accumulated I/O instead of bandwidth: <strong>iotop -a (or) iotop --accumulated</strong></p>
+<p>To Use  kilobytes instead of a human friendly unit: <strong>iotop -k (or)  iotop --kilobytes</strong></p>
+<p>To add a time stamp on each line: <strong>iotop -t (or) iotop --time</strong></p>
+<p>To suppress some lines of header: <strong>iotop -q (or) iotop --quiet</strong></p>
                 
                   
                 
@@ -717,7 +816,7 @@ Recv-Q and Send-Q are used per TCP connection.
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Linux Networking/" title="Networking" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../golang/error/" title="error" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -726,19 +825,19 @@ Recv-Q and Send-Q are used per TCP connection.
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Networking
+                error
               </span>
             </div>
           </a>
         
         
-          <a href="../../web/http/" title="HTTP" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../networking/Linux Networking/" title="Networking" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                HTTP
+                Networking
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
