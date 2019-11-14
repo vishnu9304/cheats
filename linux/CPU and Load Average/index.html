@@ -386,6 +386,8 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
+    
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         CPU's
@@ -399,34 +401,23 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cpus-and-load-averages" title="CPU's and Load Averages" class="md-nav__link">
-    CPU's and Load Averages
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#key-points-about-cpus" title="Key points about CPU's:" class="md-nav__link">
     Key points about CPU's:
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#understanding-linux-cpu-load-averages" title="Understanding Linux CPU Load averages:" class="md-nav__link">
     Understanding Linux CPU Load averages:
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -568,34 +559,23 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cpus-and-load-averages" title="CPU's and Load Averages" class="md-nav__link">
-    CPU's and Load Averages
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#key-points-about-cpus" title="Key points about CPU's:" class="md-nav__link">
     Key points about CPU's:
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#understanding-linux-cpu-load-averages" title="Understanding Linux CPU Load averages:" class="md-nav__link">
     Understanding Linux CPU Load averages:
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -615,8 +595,6 @@
             <article class="md-content__inner md-typeset">
               
                 
-                
-                  <h1>CPU's</h1>
                 
                 <h3 id="cpus-and-load-averages">CPU's and Load Averages</h3>
 <h4 id="key-points-about-cpus">Key points about CPU's:</h4>
@@ -659,6 +637,17 @@ Model name:             Intel(R) Xeon(R) CPU E5-2683 v4 @ 2.10GHz
 </ol>
 <p><img alt="Render Graph" src="../cpu-cache.png" /></p>
 <h4 id="understanding-linux-cpu-load-averages">Understanding Linux CPU Load averages:</h4>
+<p>Source: https://scoutapm.com/blog/understanding-load-averages</p>
+<p>cpu load average: The number of processes currently running plus the number of processes yet to be processed.</p>
+<p><strong>Unix refers to this as the run-queue length:</strong> the sum of the number of processes that are currently running plus the number that are waiting (queued) to run.</p>
+<p><strong>"Need to Look into it"</strong>  If your load average is staying above &gt; 0.70, it's time to investigate before things get worse.</p>
+<p><strong>"Fix this now"</strong>          If your load average stays above 1.00, find the problem and fix it now.</p>
+<p><strong>"Arrgh, it's 3AM WTF?"</strong>  If your load average is above 5.00, you could be in serious trouble, your box is either hanging or slowing way down, and this will (inexplicably) happen in the worst possible time like in the middle of the night or when you're presenting at a conference.</p>
+<p>On multi-processor system, the load is relative to the number of processor cores available. </p>
+<p>The "100% utilization" mark is 1.00 on a single-core system, 2.00, on a dual-core, 4.00 on a quad-core, etc.</p>
+<p><strong>Rule of thumb:</strong> The "number of cores = max load" Rule of Thumb: on a multicore system, your load should not exceed the number of cores available.</p>
+<h1 id="of-cores-is-important-to-interpreting-load-averages-how-do-i-know-how-many-cores-my-system-has">of cores is important to interpreting load averages ... how do I know how many cores my system has?</h1>
+<p><strong>cat /proc/cpuinfo</strong> to get info on each processor in your system.</p>
                 
                   
                 
