@@ -83,7 +83,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#filesystems" tabindex="1" class="md-skip">
+      <a href="#display-filesystem-mounting-information" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -416,36 +416,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#filesystems" title="Filesystems" class="md-nav__link">
-    Filesystems
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#display-filesystem-mounting-information" title="Display filesystem mounting information" class="md-nav__link">
     Display filesystem mounting information
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#mounting-and-un-mounting-filesystems" title="Mounting and Un-Mounting Filesystems" class="md-nav__link">
     Mounting and Un-Mounting Filesystems
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#mounting-and-unmounting-filesystems-automatically-with-etcfstab" title="Mounting and Unmounting filesystems Automatically with /etc/fstab" class="md-nav__link">
     Mounting and Unmounting filesystems Automatically with /etc/fstab
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -592,36 +579,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#filesystems" title="Filesystems" class="md-nav__link">
-    Filesystems
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#display-filesystem-mounting-information" title="Display filesystem mounting information" class="md-nav__link">
     Display filesystem mounting information
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#mounting-and-un-mounting-filesystems" title="Mounting and Un-Mounting Filesystems" class="md-nav__link">
     Mounting and Un-Mounting Filesystems
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#mounting-and-unmounting-filesystems-automatically-with-etcfstab" title="Mounting and Unmounting filesystems Automatically with /etc/fstab" class="md-nav__link">
     Mounting and Unmounting filesystems Automatically with /etc/fstab
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -644,44 +618,53 @@
                 
                   <h1>Filesystems</h1>
                 
-                <h3 id="filesystems">Filesystems</h3>
-<h4 id="display-filesystem-mounting-information">Display filesystem mounting information</h4>
+                <h4 id="display-filesystem-mounting-information">Display filesystem mounting information</h4>
 <p><strong>How to display mount information?</strong>   </p>
-<p>mount    </p>
-<p>/dev/vda1 on / type ext4 (rw)  <br />
-proc on /proc type proc (rw)  <br />
-sysfs on /sys type sysfs (rw)  <br />
-devpts on /dev/pts type devpts (rw,gid=5,mode=620)  <br />
-tmpfs on /dev/shm type tmpfs (rw)  <br />
-none on /proc/sys/fs/binfmt_misc type binfmt_misc (rw)    </p>
+<pre><code>mount    
+/dev/vda1 on / type ext4 (rw)    
+proc on /proc type proc (rw)    
+sysfs on /sys type sysfs (rw)    
+devpts on /dev/pts type devpts (rw,gid=5,mode=620)    
+tmpfs on /dev/shm type tmpfs (rw)    
+none on /proc/sys/fs/binfmt_misc type binfmt_misc (rw)
+</code></pre>
 <p><strong>Where does the mount command gets the above information?</strong>     <br />
 I get the details from the file <strong>/etc/mtab</strong>      <br />
 This file will get updated whenever a mount point gets mounted and un-mounted.</p>
-<p><strong>How to skip updating /etc/mtab file?</strong>    <br />
-mount -n (-n option)</p>
+<p><strong>How to skip updating /etc/mtab file?</strong>      </p>
+<pre><code>mount -n (-n option)
+</code></pre>
 <p><strong>Note:</strong> /etc/mtab file will not have the up-to-date information about the mount points.  <br />
 The updated information about the mount points will be present under <strong>/proc/mounts</strong>    </p>
 <hr />
 <h4 id="mounting-and-un-mounting-filesystems">Mounting and Un-Mounting Filesystems</h4>
-<p><strong>How to check which process is using files and directories on a mounted partitions?</strong>  <br />
-fuser -v / (-v verbose)  <br />
-fuser -k /mnt/data (identify and kill all the processes using the mount point "/mnt/data")</p>
-<p><strong>How to un-mount and force un-mount a file system?</strong>  <br />
-unmount /mnt/data (Clean unmount)  <br />
-unmount -f /mnt/data  (Force unmount)    </p>
-<p><strong>How to mount filesystem?</strong>  <br />
-mount -t ext3 /dev/xvdj1 /mnt/data</p>
-<p><strong>How to remount a filesystem?</strong>  <br />
-mount -o remount,ro /mnt/data</p>
+<p><strong>How to check which process is using files and directories on a mounted partitions?</strong>    </p>
+<pre><code>fuser -v / (-v verbose)    
+fuser -k /mnt/data (identify and kill all the processes using the mount point "/mnt/data")
+</code></pre>
+<p><strong>How to un-mount and force un-mount a file system?</strong>    </p>
+<pre><code>unmount /mnt/data (Clean unmount)    
+unmount -f /mnt/data  (Force unmount)
+</code></pre>
+<p><strong>How to mount filesystem?</strong>    </p>
+<pre><code>mount -t ext3 /dev/xvdj1 /mnt/data
+</code></pre>
+<p><strong>How to remount a filesystem?</strong>    </p>
+<pre><code>mount -o remount,ro /mnt/data
+</code></pre>
 <hr />
 <h4 id="mounting-and-unmounting-filesystems-automatically-with-etcfstab">Mounting and Unmounting filesystems Automatically with /etc/fstab</h4>
-<p><strong>Entry inside fstab</strong>  <br />
-source      destination fstype  options  <br />
-/dev/xvdj1  /mnt/data   ext3    defaults    0 0   </p>
-<p><strong>How to label the drives?</strong>         <br />
-sudo e2label /dev/xvdj1 mydata  <br />
-go to /etc/fstab and add an entry like below.      <br />
-LABEL=mydata /mnt/data   ext3    defaults    0 0    </p>
+<p><strong>Entry inside fstab</strong>    </p>
+<pre><code>source      destination fstype  options    
+/dev/xvdj1  /mnt/data   ext3    defaults    0 0
+</code></pre>
+<p><strong>How to label the drives?</strong>           </p>
+<pre><code>sudo e2label /dev/xvdj1 mydata
+
+go to /etc/fstab and add an entry like below.
+
+LABEL=mydata /mnt/data   ext3    defaults    0 0
+</code></pre>
                 
                   
                 
