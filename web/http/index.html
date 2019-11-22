@@ -385,6 +385,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux/Filesystem/" title="Filesystems" class="md-nav__link">
+      Filesystems
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -886,12 +898,18 @@ Example:    https://www.yahoo.com/search?q=tesla%20research#space%20research
 [POST]              Update a resource
 [PUT]               Store a resource
 [DELETE]            Remove a resource
-[HEAD               Reterive the headers for a resource
+[HEAD]              Reterive the headers for a resource
 
 telnet yahoo.com 80
 GET /yahoo.com/yahoomail.jpg    HTTP/1.1
 Host:yahoo.com
 </code></pre>
+<p><strong>When to use PUT and POST?</strong></p>
+<p>The PUT method completely replaces whatever currently exists at the target URL with something else. With this method, you can create a new resource or overwrite an existing one given you know the exact Request-URI.<br />
+In short, the PUT method is used to create or overwrite a resource at a particular URL that is known by the client.<br />
+PUT method is idempotent because no matter how many times we send the same request, the results will always be the same.<br />
+On the other hand, the POST method is not idempotent since if we send the same POST request multiple times, we will receive various results.<br />
+When you know the URL of the thing you want to create or overwrite, a PUT method should be used. Alternatively, if you only know the URL of the category or sub-section of the thing you want to create something within, use the POST method.  </p>
 <h4 id="safe-and-unsafe">Safe and Unsafe:</h4>
 <pre><code>Safe    -    let's you to read and view resources.
 Unsafe  -    let's you to modify the resources.
@@ -985,7 +1003,7 @@ http (Application Layer) -&gt; tcp (Transport Layer)
     Example: Specific set of users (clients) can access twitter from company via the Forward server.
 </code></pre>
 <h4 id="reverse-proxy">Reverse Proxy:</h4>
-<pre><code>    Reverse sits at the server end accepts the request from internet and forwards them to servers (example: load balancing).
+<pre><code>    Reverse Proxy sits at the server end accepts the request from internet and forwards them to servers (example: load balancing).
 </code></pre>
 <h4 id="cache-controls">Cache Controls:</h4>
 <pre><code>With HTTP/1.1 clients and proxies generally cache the response with 200 ok response code.
