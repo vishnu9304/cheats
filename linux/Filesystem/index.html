@@ -436,6 +436,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#swap-space" title="Swap space" class="md-nav__link">
+    Swap space
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filesystem-types-and-creating-them" title="Filesystem Types and Creating Them" class="md-nav__link">
+    Filesystem Types and Creating Them
+  </a>
+  
+</li>
+      
       
       
       
@@ -599,6 +613,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#swap-space" title="Swap space" class="md-nav__link">
+    Swap space
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filesystem-types-and-creating-them" title="Filesystem Types and Creating Them" class="md-nav__link">
+    Filesystem Types and Creating Them
+  </a>
+  
+</li>
+      
       
       
       
@@ -665,6 +693,44 @@ go to /etc/fstab and add an entry like below.
 
 LABEL=mydata /mnt/data   ext3    defaults    0 0
 </code></pre>
+<p><strong>What is the most stable method of mounting device?</strong>  <br />
+Using <strong>blkid</strong> utility, which give us the UUID of the devices, which are unique for each devices.  <br />
+Two ways to get UUID, one is using <strong>blkid</strong> utility and the other one is <strong>ls -la /dev/disk/by-uuid/</strong>  <br />
+Copy the UUID value and add it under /etc/fstab    </p>
+<hr />
+<h4 id="swap-space">Swap space</h4>
+<pre><code>swapon -s   (To list swap partitions)
+
+swapon -a   (Enable swap)
+
+swapoff -a  (disable swap)
+</code></pre>
+<hr />
+<h4 id="filesystem-types-and-creating-them">Filesystem Types and Creating Them</h4>
+<p>Four key filesystems ext{2-4}, xfs</p>
+<p><strong>Commands to create and format the file systems:</strong>    </p>
+<p><strong>Step1: Create the parition</strong></p>
+<pre><code>fdisk -l* (list all the devices that are detected, whether they are currently partitioned or not)    
+fdisk /dev/xvdj (format the device /dev/xvdj)
+</code></pre>
+<p><strong>Step 2: Create filesystem on top of partition</strong></p>
+<pre><code>mkfs -t ext4 /dev/xvdj1
+mkfs -t xfs /dev/xvdj1
+</code></pre>
+<p><strong>Step 3: Mount and start Writing</strong></p>
+<p><strong>filesystem checks</strong> </p>
+<p><strong>Note:</strong> Don't run filesystem checks on a mounted filesystem</p>
+<p><strong>How to print more detailes information about a given partition (only ext based)?</strong>       </p>
+<pre><code>dumpe2fs /dev/xvdf1
+dumpe2fs -h /dev/xvdf1
+</code></pre>
+<p><strong>dumpe2fs provides a lot of information about the physical filesystem, how to modify these values? (only ext based)</strong></p>
+<pre><code>tune2fs
+</code></pre>
+<p><strong>There is an one more utility which will give an interactive prompt</strong></p>
+<pre><code>debug2fs
+</code></pre>
+<hr />
                 
                   
                 
