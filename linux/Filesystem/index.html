@@ -450,6 +450,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#smart-and-smartd-self-monitoring-analysis-and-reporting-technology" title="SMART and smartd (Self Monitoring, Analysis and Reporting Technology)" class="md-nav__link">
+    SMART and smartd (Self Monitoring, Analysis and Reporting Technology)
+  </a>
+  
+</li>
+      
       
       
       
@@ -574,6 +581,42 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      K8s
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        K8s
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../k8s/k8s/" title="K8s" class="md-nav__link">
+      K8s
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -623,6 +666,13 @@
         <li class="md-nav__item">
   <a href="#filesystem-types-and-creating-them" title="Filesystem Types and Creating Them" class="md-nav__link">
     Filesystem Types and Creating Them
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smart-and-smartd-self-monitoring-analysis-and-reporting-technology" title="SMART and smartd (Self Monitoring, Analysis and Reporting Technology)" class="md-nav__link">
+    SMART and smartd (Self Monitoring, Analysis and Reporting Technology)
   </a>
   
 </li>
@@ -710,7 +760,7 @@ swapoff -a  (disable swap)
 <p>Four key filesystems ext{2-4}, xfs</p>
 <p><strong>Commands to create and format the file systems:</strong>    </p>
 <p><strong>Step1: Create the parition</strong></p>
-<pre><code>fdisk -l* (list all the devices that are detected, whether they are currently partitioned or not)    
+<pre><code>fdisk -l (list all the devices that are detected, whether they are currently partitioned or not)    
 fdisk /dev/xvdj (format the device /dev/xvdj)
 </code></pre>
 <p><strong>Step 2: Create filesystem on top of partition</strong></p>
@@ -730,7 +780,28 @@ dumpe2fs -h /dev/xvdf1
 <p><strong>There is an one more utility which will give an interactive prompt</strong></p>
 <pre><code>debug2fs
 </code></pre>
+<p><strong>Maintaining a Linux Filesystem (Change and View XFS Based Filesystems)</strong></p>
+<p>Install the xfs programs.   <br />
+yum install xfsprogs    </p>
+<p><strong>xfs_info /dev/xvdf1</strong> provides information about the xfs filesystem.     <br />
+<strong>xfs_repair /dev/xvdf1</strong> to check and fix xfs filesystem. (Makesure the filesystem is un-mounted)  <br />
+<strong>xfs_repair -n /dev/xvdf1</strong> only check don't repair. (Makesure the filesystem is un-mounted)
+<strong>xfsdump -f /mnt/backup/backupfile /mnt/xfsdata</strong> to take backup of xfs filesystem.     <br />
+<strong>xfsrestore -f /mnt/backup/backupfile /mnt/restore</strong> to restore backup.  <br />
+<strong>xfsrestore -I</strong> provide information about the backup history.</p>
+<p>We can restore xfs backup to an non-xfs filesystem.</p>
 <hr />
+<h4 id="smart-and-smartd-self-monitoring-analysis-and-reporting-technology">SMART and smartd (Self Monitoring, Analysis and Reporting Technology)</h4>
+<p>Built in to ATA, IDE, SCSI-3 hard drives
+Designed to monitor the reliablity of the drive</p>
+<p><strong>What is smartd?</strong>  <br />
+A daemon that interacts with SMART functionality on drives.  <br />
+By default it queries every disk a 30mins interval and configurable.
+Errors are logged to syslog (/var/log/message, configurable)    </p>
+<pre><code>smartctl -i /dev/sda
+</code></pre>
+<p>More at:<br />
+<a href="https://www.thomas-krenn.com/en/wiki/SMART_tests_with_smartctl">https://www.thomas-krenn.com/en/wiki/SMART_tests_with_smartctl</a></p>
                 
                   
                 
