@@ -413,6 +413,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#what-is-chef-supermarket" title="What is Chef Supermarket?" class="md-nav__link">
+    What is Chef Supermarket?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-test-kitchen" title="What is Test Kitchen?" class="md-nav__link">
+    What is Test Kitchen?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cookbooks" title="Cookbooks" class="md-nav__link">
+    Cookbooks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roles" title="Roles" class="md-nav__link">
+    Roles
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#command-references" title="Command References" class="md-nav__link">
     Command References
   </a>
@@ -739,6 +767,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#what-is-chef-supermarket" title="What is Chef Supermarket?" class="md-nav__link">
+    What is Chef Supermarket?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-test-kitchen" title="What is Test Kitchen?" class="md-nav__link">
+    What is Test Kitchen?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cookbooks" title="Cookbooks" class="md-nav__link">
+    Cookbooks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roles" title="Roles" class="md-nav__link">
+    Roles
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#command-references" title="Command References" class="md-nav__link">
     Command References
   </a>
@@ -764,7 +820,7 @@
                 
                   <h1>chef</h1>
                 
-                <h5 id="chef-server-installation">Chef Server Installation</h5>
+                <h4 id="chef-server-installation">Chef Server Installation</h4>
 <ol>
 <li>wget https://packages.chef.io/files/stable/chef-server/13.1.13/el/6/chef-server-core-13.1.13-1.el6.x86_64.rpm  </li>
 <li>pm -Uvh chef-server-core-13.1.13-1.el6.x86_64.rpm  </li>
@@ -778,7 +834,7 @@
 </ol>
 <p><strong>Note:</strong> we have two keys, orgkey and personal key.
 "Chef Manage" is an ruby and rails application that provides an web interface for chef server.  </p>
-<h5 id="ched-dk-installation">Ched DK installation</h5>
+<h4 id="ched-dk-installation">Ched DK installation</h4>
 <ol>
 <li>wget https://packages.chef.io/files/stable/chefdk/2.5.3/el/6/chefdk-2.5.3-1.el6.x86_64.rpm    </li>
 <li>rpm -Uvh chef-server-core-13.1.13-1.el6.x86_64.rpm    </li>
@@ -789,7 +845,7 @@
 <li>knife node list  </li>
 </ol>
 <p><strong>Note:</strong> Before start working with chef make sure the above variables are set.</p>
-<h5 id="what-happens-when-a-chef-client-run-occurs">what happens when a chef-client run occurs?</h5>
+<h4 id="what-happens-when-a-chef-client-run-occurs">what happens when a chef-client run occurs?</h4>
 <ol>
 <li>Get configuration data - Read information from client.rb file and Ohai attributes. 
    /etc/chef<br />
@@ -804,14 +860,52 @@
 <li>Update the node object, process exception &amp; report handlers - Update the node object on the Chef server after the chef-client run finishes successfully. Also executing the exception and report handlers in the proper order.</li>
 <li>Stop, wait for the next run - The chef-client waits until the next time it is executed. </li>
 </ol>
-<h5 id="command-references">Command References</h5>
+<h4 id="what-is-chef-supermarket">What is Chef Supermarket?</h4>
+<p>The Chef Supermarket is a searchable repository for cookbooks.Most modern programming languages have repositories for open source packages (Pypi for Python, Rubygems.org for Ruby, etc.) and that is what the Chef Supermarket is for cookbooks.</p>
+<p>There are a few ways that you can interact with the Chef Supermarket:<br />
+    Using the public supermarket<br />
+    Deploying a private supermarket  </p>
+<p>The public supermarket includes a lot of open source cookbooks, some of them officially maintained by Chef the company and many more that are published by enthusiastic Chef users.</p>
+<p>Beware: not all of the cookbooks on the public supermarket are up to date and secure, you’ll want to vet anything open source cookbook that you use.</p>
+<p><strong>Super Market Related Tools:</strong></p>
+<p>Berkshelf - used to install and manage cookbook dependencies and versions.<br />
+Stove - used to version and publish cookbooks to a supermarket (either public or private). </p>
+<h4 id="what-is-test-kitchen">What is Test Kitchen?</h4>
+<p>Test Kitchen (or just “Kitchen”) is a testing harness that allows us to easily provision environments using a variety of platforms and backends so that we can test our infrastructure code.<br />
+We can easily create a brand new “server” that is running a specific operating system, install Chef, run a specific run list, and then execute automated tests to ensure that the configuration that we’re expecting is configured properly.<br />
+This process might sound tedious, but we can use VM tools like Vagrant or containers through Docker to rapidly create, configure, test, and destroy these environments.  </p>
+<h4 id="cookbooks">Cookbooks</h4>
+<p>chef generate cookbook <strong>path</strong>/<strong>cookbook name</strong> - To create a cookbook</p>
+<p><strong>Documentations:</strong><br />
+Cookbooks: <a href="https://docs.chef.io/cookbooks.html">https://docs.chef.io/cookbooks.html</a><br />
+Recipes: <a href="https://docs.chef.io/recipes.html">https://docs.chef.io/recipes.html</a><br />
+Resource: <a href="https://docs.chef.io/resource.html">https://docs.chef.io/resource.html</a><br />
+Package: <a href="https://docs.chef.io/resource_package.html">https://docs.chef.io/resource_package.html</a><br />
+Service: <a href="https://docs.chef.io/resource_service.html">https://docs.chef.io/resource_service.html</a>  </p>
+<h4 id="roles">Roles</h4>
+<p>In simple words, Roles are nothing but collection of run lists. We first create a role and add set of run lists and assign the roles to the nodes.</p>
+<p>First export EDITOR="vim"<br />
+<strong>knife role create [ROLENAME]</strong><br />
+It will open vim editor with a role template, add the run lists there and save <br />
+It will create the role in chef server<br />
+<strong>knife role show</strong><br />
+<strong>knife node run_list add FQDN 'role[ROLENAME]'</strong><br />
+<strong>knife node show FQDN 'role[ROLENAME]' --before 'recipe[COOKBOOK::RECIPE]'</strong> - If you want to run your recipes in your role before any other recipes  </p>
+<h4 id="command-references">Command References</h4>
 <p><strong>Knife Commands:</strong><br />
 <strong>knife cookbook list</strong> - to list the available cookbooks<br />
 <strong>knife data bag list</strong> - to list data bags<br />
 <strong>knife environment list</strong> - to list environments<br />
 <strong>knife node list</strong> - to list nodes<br />
-<strong>knife role list</strong> - to list roles</p>
-<p><strong>Command to bootstrap a node:</strong> knife bootstrap <strong>NODE-FQDN</strong> -N <strong>NODE-NAME</strong> -x vishnu --sudo -A</p>
+<strong>knife role list</strong> - to list roles
+<strong>knife node list -VV</strong> - for verbose output</p>
+<p><strong>Command to bootstrap a node:</strong> knife bootstrap <strong>NODE-FQDN</strong> -N <strong>NODE-NAME</strong> -x vishnu --sudo -A<br />
+<a href="https://docs.chef.io/install_bootstrap.html">https://docs.chef.io/install_bootstrap.html</a></p>
+<p><strong>knife upload cookbook</strong> - To upload the cookbook to chef server<br />
+<strong>knife node run_list add FQDN 'recipe[COOKBOOK::RECIPENAME]'</strong><br />
+<strong>knife node run_list set FQDN COOKBOOK</strong> - This will set the run list for the host to default recipe <br />
+<strong>knife ssh 'name:NODENAME' 'sudo chef-client' -x v01 -A</strong> - To execute chef client run remotely<br />
+<strong>knife node edit FQDN -a</strong> - To edit the node object stored in the chef server  </p>
                 
                   
                 
