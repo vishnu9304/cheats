@@ -83,7 +83,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#chef-server-installation" tabindex="1" class="md-skip">
+      <a href="#documentation" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -392,6 +392,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#documentation" title="Documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chef-server-installation" title="Chef Server Installation" class="md-nav__link">
     Chef Server Installation
   </a>
@@ -434,8 +441,22 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#runlists" title="Runlists" class="md-nav__link">
+    Runlists
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#roles" title="Roles" class="md-nav__link">
     Roles
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environments" title="Environments" class="md-nav__link">
+    Environments
   </a>
   
 </li>
@@ -746,6 +767,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#documentation" title="Documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chef-server-installation" title="Chef Server Installation" class="md-nav__link">
     Chef Server Installation
   </a>
@@ -788,8 +816,22 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#runlists" title="Runlists" class="md-nav__link">
+    Runlists
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#roles" title="Roles" class="md-nav__link">
     Roles
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environments" title="Environments" class="md-nav__link">
+    Environments
   </a>
   
 </li>
@@ -820,7 +862,13 @@
                 
                   <h1>chef</h1>
                 
-                <h4 id="chef-server-installation">Chef Server Installation</h4>
+                <h4 id="documentation">Documentation</h4>
+<p>Cookbooks: <a href="https://docs.chef.io/cookbooks.html">https://docs.chef.io/cookbooks.html</a><br />
+Recipes: <a href="https://docs.chef.io/recipes.html">https://docs.chef.io/recipes.html</a><br />
+Resource: <a href="https://docs.chef.io/resource.html">https://docs.chef.io/resource.html</a><br />
+Package: <a href="https://docs.chef.io/resource_package.html">https://docs.chef.io/resource_package.html</a><br />
+Service: <a href="https://docs.chef.io/resource_service.html">https://docs.chef.io/resource_service.html</a>  </p>
+<h4 id="chef-server-installation">Chef Server Installation</h4>
 <ol>
 <li>wget https://packages.chef.io/files/stable/chef-server/13.1.13/el/6/chef-server-core-13.1.13-1.el6.x86_64.rpm  </li>
 <li>pm -Uvh chef-server-core-13.1.13-1.el6.x86_64.rpm  </li>
@@ -876,21 +924,30 @@ We can easily create a brand new “server” that is running a specific operati
 This process might sound tedious, but we can use VM tools like Vagrant or containers through Docker to rapidly create, configure, test, and destroy these environments.  </p>
 <h4 id="cookbooks">Cookbooks</h4>
 <p>chef generate cookbook <strong>path</strong>/<strong>cookbook name</strong> - To create a cookbook</p>
-<p><strong>Documentations:</strong><br />
-Cookbooks: <a href="https://docs.chef.io/cookbooks.html">https://docs.chef.io/cookbooks.html</a><br />
-Recipes: <a href="https://docs.chef.io/recipes.html">https://docs.chef.io/recipes.html</a><br />
-Resource: <a href="https://docs.chef.io/resource.html">https://docs.chef.io/resource.html</a><br />
-Package: <a href="https://docs.chef.io/resource_package.html">https://docs.chef.io/resource_package.html</a><br />
-Service: <a href="https://docs.chef.io/resource_service.html">https://docs.chef.io/resource_service.html</a>  </p>
+<h4 id="runlists">Runlists</h4>
+<p><a href="https://docs.chef.io/run_lists.html">https://docs.chef.io/run_lists.html</a></p>
+<p><strong>knife upload cookbook path/cookbook name</strong> - To upload a cookbook to chef server<br />
+<strong>knife node run_list add [FQDN] -r 'recipe[COOKBOOK::RECIPE], COOKBOOK:RECIPE, role[NAME]'</strong><br />
+<strong>knife node run_list set FQDN COOKBOOK</strong> - This will set the run list for the host to default recipe of the given cookbook<br />
+<strong>knife ssh 'name:NODENAME' 'sudo chef-client' -x v01 -A</strong> - To execute chef client run remotely<br />
+<strong>knife node edit FQDN -a</strong> - To edit the node object stored in the chef server  </p>
 <h4 id="roles">Roles</h4>
-<p>In simple words, Roles are nothing but collection of run lists. We first create a role and add set of run lists and assign the roles to the nodes.</p>
+<p>In simple words, Roles are nothing but collection of run lists with some default attributes. We first create a role and add set of run lists and assign the roles to the nodes.</p>
+<p>Exampe: Create set of cookbooks (more generic), which needs to be installed universally across the infrastructure and packaged them as ROLES.</p>
 <p>First export EDITOR="vim"<br />
 <strong>knife role create [ROLENAME]</strong><br />
 It will open vim editor with a role template, add the run lists there and save <br />
 It will create the role in chef server<br />
 <strong>knife role show</strong><br />
 <strong>knife node run_list add FQDN 'role[ROLENAME]'</strong><br />
-<strong>knife node show FQDN 'role[ROLENAME]' --before 'recipe[COOKBOOK::RECIPE]'</strong> - If you want to run your recipes in your role before any other recipes  </p>
+<strong>knife node show FQDN 'role[ROLENAME]' --before 'recipe[COOKBOOK::RECIPE]'</strong> - If you want to run your recipes in your role before any other recipes <br />
+<strong>knife ssh 'name:NODENAME' 'sudo chef-client' -x v01 -A</strong> - Where 'name:NODENAME' is the search query  </p>
+<h4 id="environments">Environments</h4>
+<p>It’s pretty common to have nodes that are seemingly identical in what they install, but used for slightly different purposes.<br />
+A great example of this is a staging application server vs. a production application server.  </p>
+<p><strong>knife environment create staging --description "pre-prodduction staging environment"</strong> - to create an environment <br />
+<strong>knife node environment_set [NODE] [ENVIRONMENT]</strong> - to set environment to a node <br />
+<strong>knife node show [NODE] -a environment</strong> - to get a particular attribute  </p>
 <h4 id="command-references">Command References</h4>
 <p><strong>Knife Commands:</strong><br />
 <strong>knife cookbook list</strong> - to list the available cookbooks<br />
@@ -901,11 +958,6 @@ It will create the role in chef server<br />
 <strong>knife node list -VV</strong> - for verbose output</p>
 <p><strong>Command to bootstrap a node:</strong> knife bootstrap <strong>NODE-FQDN</strong> -N <strong>NODE-NAME</strong> -x vishnu --sudo -A<br />
 <a href="https://docs.chef.io/install_bootstrap.html">https://docs.chef.io/install_bootstrap.html</a></p>
-<p><strong>knife upload cookbook</strong> - To upload the cookbook to chef server<br />
-<strong>knife node run_list add FQDN 'recipe[COOKBOOK::RECIPENAME]'</strong><br />
-<strong>knife node run_list set FQDN COOKBOOK</strong> - This will set the run list for the host to default recipe <br />
-<strong>knife ssh 'name:NODENAME' 'sudo chef-client' -x v01 -A</strong> - To execute chef client run remotely<br />
-<strong>knife node edit FQDN -a</strong> - To edit the node object stored in the chef server  </p>
                 
                   
                 
