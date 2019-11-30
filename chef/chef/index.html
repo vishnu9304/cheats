@@ -295,6 +295,42 @@
 
 
   <li class="md-nav__item">
+    <a href="../../golang/variables/" title="variables" class="md-nav__link">
+      variables
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../golang/constants/" title="constants" class="md-nav__link">
+      constants
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../golang/types/" title="types" class="md-nav__link">
+      types
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../golang/gomod/" title="gomod" class="md-nav__link">
       gomod
     </a>
@@ -457,6 +493,13 @@
         <li class="md-nav__item">
   <a href="#environments" title="Environments" class="md-nav__link">
     Environments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#databags" title="Databags" class="md-nav__link">
+    Databags
   </a>
   
 </li>
@@ -837,6 +880,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#databags" title="Databags" class="md-nav__link">
+    Databags
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#command-references" title="Command References" class="md-nav__link">
     Command References
   </a>
@@ -948,6 +998,22 @@ A great example of this is a staging application server vs. a production applica
 <p><strong>knife environment create staging --description "pre-prodduction staging environment"</strong> - to create an environment <br />
 <strong>knife node environment_set [NODE] [ENVIRONMENT]</strong> - to set environment to a node <br />
 <strong>knife node show [NODE] -a environment</strong> - to get a particular attribute  </p>
+<h4 id="databags">Databags</h4>
+<p><a href="https://docs.chef.io/data_bags.html">https://docs.chef.io/data_bags.html</a>  </p>
+<p>Data bags are pieces of JSON data that are stored in the Chef Server.<br />
+They're searchable and also available within recipes.<br />
+Where attributes can be a little complicated because of the precedence order, data bags are relatively simple.  </p>
+<p><strong>knife data bag create [DATABAG NAME]</strong> - to create databag  </p>
+<p>Create a databag for Jenkins user: jenkins.json</p>
+<pre><code>{
+"id": "jenkins",
+"comment": "A user for CI/CD",
+"password": "$1$6eMmUKIy$8QdyDIyDnwmNTkjKKWbvq.",
+"groups": ["ci"],
+"uid": 2001
+}
+</code></pre>
+<p><strong>knife data bag create [DATABAG NAME] jenkins</strong> </p>
 <h4 id="command-references">Command References</h4>
 <p><strong>Knife Commands:</strong><br />
 <strong>knife cookbook list</strong> - to list the available cookbooks<br />
