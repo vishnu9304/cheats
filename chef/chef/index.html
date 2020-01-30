@@ -714,6 +714,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux/Process_Management/" title="Process Management" class="md-nav__link">
+      Process Management
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -923,6 +935,54 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      CONSUL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        CONSUL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../consul/httpAPI/" title="httpAPI" class="md-nav__link">
+      httpAPI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../consul/consul sessions/" title="Sessions" class="md-nav__link">
+      Sessions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -1066,13 +1126,16 @@ Service: <a href="https://docs.chef.io/resource_service.html">https://docs.chef.
 "Chef Manage" is an ruby and rails application that provides an web interface for chef server.  </p>
 <h4 id="ched-dk-installation">Ched DK installation</h4>
 <ol>
-<li>wget https://packages.chef.io/files/stable/chefdk/2.5.3/el/6/chefdk-2.5.3-1.el6.x86_64.rpm    </li>
-<li>rpm -Uvh chef-server-core-13.1.13-1.el6.x86_64.rpm    </li>
-<li>chef shell-init bash    </li>
-<li>eval "$(chef shell-init bash)" (or) chef shell-init bash &gt;&gt; ~/.bash_profile    </li>
-<li>chef generate repo chef-repo    </li>
-<li>knife configure  [input the values, go to ~/.chef, you will find 2 files <strong>credentials</strong> and <strong>key</strong> file]  </li>
-<li>knife node list  </li>
+<li><code>wget https://packages.chef.io/files/stable/chefdk/2.5.3/el/6/chefdk-2.5.3-1.el6.x86_64.rpm</code> </li>
+<li><code>rpm -Uvh chef-server-core-13.1.13-1.el6.x86_64.rpm</code>    </li>
+<li><code>eval "$(chef shell-init bash)"</code>   </li>
+<li>Most of the tooling around Chef is written in Ruby, and this can be a source of issues when working with Chef locally sometimes because we might already have a version of Ruby installed. Before we continue let's look at what version we might be using and see how to explicitly use the ChefDK version of these packages.</li>
+<li><code>which ruby</code></li>
+<li><code>echo 'eval "$(chef shell-init bash)"' &gt;&gt; ~/.bash_profile</code>    </li>
+<li><code>chef generate repo chef-repo</code>    </li>
+<li><code>knife configure</code>  [input the values, go to ~/.chef, you will find 2 files <strong>credentials</strong> and <strong>key</strong> file]  </li>
+<li>knife node list </li>
+<li>if you get SSL error <code>knife ssl fetch</code> </li>
 </ol>
 <p><strong>Note:</strong> Before start working with chef make sure the above variables are set.</p>
 <h4 id="what-happens-when-a-chef-client-run-occurs">what happens when a chef-client run occurs?</h4>
@@ -1080,7 +1143,7 @@ Service: <a href="https://docs.chef.io/resource_service.html">https://docs.chef.
 <li>Get configuration data - Read information from client.rb file and Ohai attributes. 
    /etc/chef<br />
    client.pem  client.rb  first-boot.json  </li>
-<li>Authenticate w/ Chef server - Utilizes RSA key &amp; node name to authenticate with Chef server. Will generate a new RSA key if this is the first connection.</li>
+<li>Authenticate with Chef server - Utilizes RSA key &amp; node name to authenticate with Chef server. Will generate a new RSA key if this is the first connection.</li>
 <li>Get/rebuild the node object - Pull node object from Chef server if this isn't the first chef-client run. After the pull, the node object is rebuilt based on the node's current state.</li>
 <li>Expand the run-list - Compiles the list of roles and recipes to be applied.</li>
 <li>Synchronize cookbooks - Request and download all of the files from cookbooks on the Chef server that are necessary to converge the run list and are different from the files already existing on the node.</li>
