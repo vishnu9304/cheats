@@ -716,8 +716,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#troubleshooting" title="Troubleshooting:" class="md-nav__link">
-    Troubleshooting:
+  <a href="#simple-analogy" title="simple analogy" class="md-nav__link">
+    simple analogy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" title="Troubleshooting" class="md-nav__link">
+    Troubleshooting
   </a>
   
 </li>
@@ -1002,8 +1009,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#troubleshooting" title="Troubleshooting:" class="md-nav__link">
-    Troubleshooting:
+  <a href="#simple-analogy" title="simple analogy" class="md-nav__link">
+    simple analogy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" title="Troubleshooting" class="md-nav__link">
+    Troubleshooting
   </a>
   
 </li>
@@ -1067,9 +1081,22 @@ The Accept Queue contains fully established connections and ready to be picked u
 <p>For example, this sets the Accept and SYN Queue sizes to 1,024:</p>
 <pre><code>listen(sfd, 1024)
 </code></pre>
-<p>This SYN Queue cap used to be configured by the <strong>net.ipv4.tcp_max_syn_backlog</strong> toggle, but this isn't the case anymore.</p>
-<p>Nowadays <strong>net.core.somaxconn</strong> caps both queue sizes.</p>
-<h4 id="troubleshooting">Troubleshooting:</h4>
+<p><strong>Socket Backlog Queue:</strong> The queue length for completely established sockets waiting to be accepted.<br />
+/proc/sys/net/core/somaxconn  </p>
+<p><strong>Syn Backlog Queue:</strong> The maximum length of the queue for incomplete sockets.<br />
+/proc/sys/net/ipv4/tcp_max_syn_backlog  </p>
+<h4 id="simple-analogy">simple analogy</h4>
+<p>Mr.X issued invited his co-workers for his son's birthday party.  </p>
+<p><code>/proc/sys/net/core/somaxconn</code> used to specify how many people are allowed to enter the function hall.<br />
+<code>/proc/sys/net/core/somaxconn</code>is used to specify the number of seats.<br />
+If the number of guests to come more than <code>tcp_max_syn_backlog</code>, so many people will meet with the director to shake hands, but to wait outside the door.<br />
+If the number of guests to the hall is greater than <code>/proc/sys/net/core/somaxconn</code>, then the extra guests will have no place to sit (must sit down to eat) can only wait for someone to eat after the empty space to eat.  </p>
+<p><strong>Note:</strong></p>
+<pre><code>If the value of a socket’s listen backlog exceeds that of **net.core.somaxconn**,
+**sysctl** value (defaults to 128 on stock builds)
+the kernel quietly shrinks the socket’s listen backlog to **net.core.somaxconn**.
+</code></pre>
+<h4 id="troubleshooting">Troubleshooting</h4>
 <p>To peek into the <strong>SYN Queue</strong> on Linux we can use the <strong>ss</strong> command and look for <strong>SYN-RECV</strong> sockets.</p>
 <pre><code>$ ss -n state syn-recv sport = :80 | wc -l
 119
