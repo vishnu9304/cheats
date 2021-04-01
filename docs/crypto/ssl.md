@@ -57,3 +57,18 @@ Verify Whether a Certificate and Private Key Match.To verify you need to print o
 #### Convert DER to PEM
 
     openssl x509 -inform der -in server.der -out server.crt
+
+#### Encrypt, Sign, Decrypt mechanism using public key cryptography
+
+- Creating public, private key pairs using openssl command.
+    - `openssl genrsa -out private.pem 3072` [generate a private key with the correct length]
+    - `openssl rsa -in private-key.pem -pubout -out public-key.pem` [openssl rsa -in private-key.pem -pubout -out public-key.pem]
+- Take the secret file and compute the hash and encrypt it using private key. [This yields a signature].
+    - `openssl dgst -sha256 [filename]` to get the file digest
+    - `openssl dgst -sha256 -sign private-key.pem -out sign.sha256  message.txt` to sign a file
+- Encrypt a file using receivers public key.
+    - `openssl rsautl -in message.txt -out message.txt.enc -inkey public-key.pem -pubin -encrypt`
+- On the receiving sid decrypt the message using receivers public key.
+    - `openssl rsautl -in message.txt.enc -out message.txt -inkey private.pem -decrypt`
+- Now you have decrypted the message, how will you verify the integrity of the message.
+    - `openssl dgst -sha256 -verify [sender_public_key] -signature [signature] [decrypted_message]`
